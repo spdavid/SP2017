@@ -1,0 +1,18 @@
+﻿
+@using RefreshMVC.Models;
+
+@{
+    ViewBag.Title = "Drinks";
+}
+
+<h2>Drinks</h2>
+
+@foreach (Drink item in ViewBag.Drinks)
+{
+    <div class="Drink">
+        <div class="DrinkTitle">
+            @item.Title
+        </div>
+        <img src="@item.Url" />
+    </div>
+}
