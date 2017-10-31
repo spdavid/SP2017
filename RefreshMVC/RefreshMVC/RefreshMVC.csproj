@@ -106,9 +106,13 @@
     <Content Include="Views\FoodnDrinks\AnotherPage.cshtml" />
     <Content Include="Views\FoodnDrinks\DrinksWithModel.cshtml" />
     <Content Include="Views\FoodnDrinks\DrinksWithModel2.cshtml" />
+    <Content Include="Views\Drinks\Index.cshtml" />
+    <Content Include="Views\Drinks\Details.cshtml" />
+    <Content Include="Views\Drinks\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DrinksController.cs" />
     <Compile Include="Controllers\FoodnDrinksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
