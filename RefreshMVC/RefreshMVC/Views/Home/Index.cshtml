@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@ViewBag.foo
+<br />
+My name is @ViewBag.MyName
+<div>
+    @{
+        foreach (string car in ViewBag.carsarray)
+        {
+            <div class="car">@car</div>
+        }
+    }
+</div>
+<br style="clear:both" />
+
