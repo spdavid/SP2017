@@ -24,6 +24,17 @@ namespace RefreshMVC.Controllers
 
         public ActionResult Drinks()
         {
+            ViewBag.Drinks = Helpers.FoodHelper.GetDrinks();
+            return View();
+        }
+
+        public ActionResult DrinksWithModel()
+        {
+            return View(Helpers.FoodHelper.GetDrinks());
+        }
+
+        public ActionResult DrinksWithModel2()
+        {
             List<Drink> drinks = new List<Drink>
             {
                 new Drink() { Title = "Soda", Url = "http://media.beam.usnews.com/28/76/090af7a34b4681895921789ffe6b/150617-sodaglass-stock.jpg" },
@@ -32,9 +43,7 @@ namespace RefreshMVC.Controllers
                 new Drink() { Title = "Vodka", Url = "https://www.wikihow.com/images/thumb/f/f4/Drink-Vodka-Step-3-preview.jpg/550px-nowatermark-Drink-Vodka-Step-3-preview.jpg" }
             };
 
-            ViewBag.Drinks = drinks;
-
-            return View();
+            return View(drinks);
         }
 
         public ActionResult AnotherPage()

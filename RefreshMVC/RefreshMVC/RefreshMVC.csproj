@@ -104,6 +104,8 @@
     <Content Include="Views\FoodnDrinks\Food.cshtml" />
     <Content Include="Views\FoodnDrinks\Drinks.cshtml" />
     <Content Include="Views\FoodnDrinks\AnotherPage.cshtml" />
+    <Content Include="Views\FoodnDrinks\DrinksWithModel.cshtml" />
+    <Content Include="Views\FoodnDrinks\DrinksWithModel2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -112,6 +114,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FoodHelper.cs" />
     <Compile Include="Models\Drink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
