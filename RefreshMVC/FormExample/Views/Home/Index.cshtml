@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>Get Form</div>
+<form action="/" method="get">
+    <div> Foo: <input type="text" name="foo" /></div>
+    <div>
+        Name:  <input type="text" name="Name" />
+    </div>
+
+        <input type="submit" value="Submit this form" />
+</form>
+
+<div>Post Form</div>
+<form action="/" method="post">
+    <div> Foo: <input type="text" name="foo" /></div>
+    <div>
+        Name:  <input type="text" name="Name" />
+    </div>
+
+    <input type="submit" value="Submit this form" />
+</form>
+
+<div>Post Form to another url</div>
+<form action="/Home/AnotherPage" method="post">
+    <div> Foo: <input type="text" name="foo" /></div>
+    <div>
+        Name:  <input type="text" name="Name" />
+    </div>
+
+    <input type="submit" value="Submit this form" />
+</form>
+

@@ -8,7 +8,7 @@ namespace StudentAssignment.Helpers
 {
     public class StudentHelper
     {
-      
+       //private static List<Student> StudentsDB = new List<Student>();
 
 
         public static List<Student> GetAllStudents()
