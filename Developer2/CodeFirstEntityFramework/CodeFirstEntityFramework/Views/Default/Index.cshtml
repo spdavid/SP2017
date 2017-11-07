@@ -1,0 +1,20 @@
+﻿@using CodeFirstEntityFramework.Models;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (School s in ViewBag.Schools)
+{
+    <div>@s.Name</div>
+    if (s.Courses != null)
+    {
+        foreach (Course c in s.Courses)
+        {
+        <div>@c.Name</div>
+        }
+    }
+}
+
