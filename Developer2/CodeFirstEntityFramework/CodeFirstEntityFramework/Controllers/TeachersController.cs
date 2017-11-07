@@ -10,116 +10,107 @@ using CodeFirstEntityFramework.Models;
 
 namespace CodeFirstEntityFramework.Controllers
 {
-    public class SchoolClassesController : Controller
+    public class TeachersController : Controller
     {
         private CodeFirstEntityFrameworkContext db = new CodeFirstEntityFrameworkContext();
 
-        // GET: SchoolClasses
+        // GET: Teachers
         public ActionResult Index()
         {
-            var schoolClasses = db.SchoolClasses.Include(s => s.Course).Include(s => s.Teacher);
-            return View(schoolClasses.ToList());
+            return View(db.Teachers.ToList());
         }
 
-        // GET: SchoolClasses/Details/5
+        // GET: Teachers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SchoolClass schoolClass = db.SchoolClasses.Find(id);
-            if (schoolClass == null)
+            Teacher teacher = db.Teachers.Find(id);
+            if (teacher == null)
             {
                 return HttpNotFound();
             }
-            return View(schoolClass);
+            return View(teacher);
         }
 
-        // GET: SchoolClasses/Create
+        // GET: Teachers/Create
         public ActionResult Create()
         {
-            ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name");
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "Name");
             return View();
         }
 
-        // POST: SchoolClasses/Create
+        // POST: Teachers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,CourseId,TeacherId")] SchoolClass schoolClass)
+        public ActionResult Create([Bind(Include = "Id,Name")] Teacher teacher)
         {
             if (ModelState.IsValid)
             {
-                db.SchoolClasses.Add(schoolClass);
+                db.Teachers.Add(teacher);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name", schoolClass.CourseId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "Name", schoolClass.TeacherId);
-            return View(schoolClass);
+            return View(teacher);
         }
 
-        // GET: SchoolClasses/Edit/5
+        // GET: Teachers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SchoolClass schoolClass = db.SchoolClasses.Find(id);
-            if (schoolClass == null)
+            Teacher teacher = db.Teachers.Find(id);
+            if (teacher == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name", schoolClass.CourseId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "Name", schoolClass.TeacherId);
-            return View(schoolClass);
+            return View(teacher);
         }
 
-        // POST: SchoolClasses/Edit/5
+        // POST: Teachers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,CourseId,TeacherId")] SchoolClass schoolClass)
+        public ActionResult Edit([Bind(Include = "Id,Name")] Teacher teacher)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(schoolClass).State = EntityState.Modified;
+                db.Entry(teacher).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name", schoolClass.CourseId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "Name", schoolClass.TeacherId);
-            return View(schoolClass);
+            return View(teacher);
         }
 
-        // GET: SchoolClasses/Delete/5
+        // GET: Teachers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SchoolClass schoolClass = db.SchoolClasses.Find(id);
-            if (schoolClass == null)
+            Teacher teacher = db.Teachers.Find(id);
+            if (teacher == null)
             {
                 return HttpNotFound();
             }
-            return View(schoolClass);
+            return View(teacher);
         }
 
-        // POST: SchoolClasses/Delete/5
+        // POST: Teachers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            SchoolClass schoolClass = db.SchoolClasses.Find(id);
-            db.SchoolClasses.Remove(schoolClass);
+            Teacher teacher = db.Teachers.Find(id);
+            db.Teachers.Remove(teacher);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

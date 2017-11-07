@@ -25,5 +25,9 @@ namespace CodeFirstEntityFramework.Models
         public System.Data.Entity.DbSet<CodeFirstEntityFramework.Models.Course> Courses { get; set; }
 
         public System.Data.Entity.DbSet<CodeFirstEntityFramework.Models.SchoolClass> SchoolClasses { get; set; }
+
+        public System.Data.Entity.DbSet<CodeFirstEntityFramework.Models.Teacher> Teachers { get; set; }
+
+        public System.Data.Entity.DbSet<CodeFirstEntityFramework.Models.Student> Students { get; set; }
     }
 }
