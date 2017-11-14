@@ -11,6 +11,7 @@ namespace CodeFirstEntityFramework.Models
         public int Id { get; set; }
         [Display(Name = "School Name")]
         public string Name { get; set; }
+        public double Income { get; set; }
         public virtual List<Course> Courses { get; set; }
     }
 }

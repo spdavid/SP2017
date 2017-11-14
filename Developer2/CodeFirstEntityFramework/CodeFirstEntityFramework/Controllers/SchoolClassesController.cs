@@ -37,9 +37,9 @@ namespace CodeFirstEntityFramework.Controllers
         }
 
         // GET: SchoolClasses/Create
-        public ActionResult Create()
+        public ActionResult Create(int CourseId)
         {
-            ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name");
+            ViewBag.CourseId = CourseId;
             ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "Name");
             return View();
         }
@@ -55,7 +55,7 @@ namespace CodeFirstEntityFramework.Controllers
             {
                 db.SchoolClasses.Add(schoolClass);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Courses", new { Id = schoolClass.CourseId});
             }
 
             ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name", schoolClass.CourseId);
