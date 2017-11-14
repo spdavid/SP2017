@@ -65,7 +65,11 @@ namespace CodeFirstEntityFramework.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+           
+            ViewBag.Courses = db.Courses;
+
             Student student = db.Students.Find(id);
+            ViewBag.StudentCourses = student.SchoolClasses.Select(sc => sc.Id).ToList();
             if (student == null)
             {
                 return HttpNotFound();
@@ -78,11 +82,26 @@ namespace CodeFirstEntityFramework.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Age")] Student student)
+        public ActionResult Edit([Bind(Include = "Id,Name,Age")] Student student, List<string> Classes)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(student).State = EntityState.Modified;
+
+                Student dbstudent = db.Students.Find(student.Id);
+
+                dbstudent.Name = student.Name;
+                dbstudent.Age = student.Age;
+
+                dbstudent.SchoolClasses.Clear();
+                if (Classes != null)
+                {
+                    foreach (string classid in Classes)
+                    {
+
+                        dbstudent.SchoolClasses.Add(db.SchoolClasses.Find(int.Parse(classid)));
+                    }
+                }
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

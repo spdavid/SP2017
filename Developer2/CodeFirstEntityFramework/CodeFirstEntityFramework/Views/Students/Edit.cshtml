@@ -1,4 +1,5 @@
-﻿@model CodeFirstEntityFramework.Models.Student
+﻿@using CodeFirstEntityFramework.Models;
+@model CodeFirstEntityFramework.Models.Student
 
 @{
     ViewBag.Title = "Edit";
@@ -9,32 +10,55 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Student</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
+        <div class="clearfix">
+            <div style="float:left; width:50%">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
             </div>
-        </div>
+            <div style="float:left; width:50%">
+                @foreach (Course courseItem in ViewBag.Courses)
+                {
+                    <h4>@courseItem.Name</h4>
+                    foreach (SchoolClass item in courseItem.SchoolClasses.OrderBy(sc=>sc.Name))
+                    {
+                       
+                        if (((List<int>)ViewBag.StudentCourses).Contains(item.Id))
+                        {
+                            <input type="checkbox" name="Classes" value="@item.Id" checked="checked" /> @item.Name <br />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        }
+                        else
+                        {
+                            <input type="checkbox" name="Classes" value="@item.Id" /> @item.Name <br />
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                        }
+                    }
+                }
             </div>
         </div>
     </div>
