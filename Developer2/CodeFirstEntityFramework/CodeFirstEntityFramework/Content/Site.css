@@ -16,3 +16,26 @@ textarea {
     max-width: 280px;
 }
 
+
+.schoolbox{
+    padding:30px;
+    float:left;
+    border: 1px solid grey;
+    margin:10px;
+    cursor:pointer;
+
+}
+
+.schoolbox:hover
+{
+    background-color:#dddddd;
+}
+
+.addlink, #SchoolDetails h4{
+    display: inline;
+}
+.addlink img {
+    height: 30px;
+}
+
+

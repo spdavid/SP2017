@@ -4,29 +4,51 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>@Html.DisplayFor(model => model.School.Name)</h2>
+<h3>@Html.DisplayFor(model => model.Name)</h3>
+<a href="/schoolclasses/create"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+
 
 <div>
-    <h4>Course</h4>
+    <h4>Classes</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.School.Name)
-        </dt>
+  <table class="table">
+    <tr>
+        <th>
+            ClassName
+        </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.School.Name)
-        </dd>
+        <th>
+            Teacher
+        </th>
+        <th>
+            Description
+        </th>
+        <th></th>
+    </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+@foreach (var item in Model.SchoolClasses) {
+    <tr>
+       
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teacher.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-    </dl>
+</table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
