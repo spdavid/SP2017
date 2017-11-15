@@ -38,6 +38,8 @@ namespace CodeFirstEntityFramework.Controllers
         // GET: Students/Create
         public ActionResult Create()
         {
+            ViewBag.Courses = db.Courses;
+
             return View();
         }
 
@@ -46,10 +48,23 @@ namespace CodeFirstEntityFramework.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Age")] Student student)
+        public ActionResult Create([Bind(Include = "Id,Name,Age")] Student student,List<string> Classes)
         {
+
+
             if (ModelState.IsValid)
             {
+                student.SchoolClasses = new List<SchoolClass>();
+                if (Classes != null)
+                {
+                    foreach (string classid in Classes)
+                    {
+
+                        student.SchoolClasses.Add(db.SchoolClasses.Find(int.Parse(classid)));
+                    }
+                }
+
+
                 db.Students.Add(student);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -69,7 +84,7 @@ namespace CodeFirstEntityFramework.Controllers
             ViewBag.Courses = db.Courses;
 
             Student student = db.Students.Find(id);
-            ViewBag.StudentCourses = student.SchoolClasses.Select(sc => sc.Id).ToList();
+            ViewBag.StudentClasses = student.SchoolClasses.Select(sc => sc.Id).ToList();
             if (student == null)
             {
                 return HttpNotFound();
@@ -92,7 +107,10 @@ namespace CodeFirstEntityFramework.Controllers
                 dbstudent.Name = student.Name;
                 dbstudent.Age = student.Age;
 
+                // remove all classes from student
                 dbstudent.SchoolClasses.Clear();
+
+                // re add any classes that were checked. 
                 if (Classes != null)
                 {
                     foreach (string classid in Classes)

@@ -29,9 +29,12 @@ namespace CodeFirstEntityFramework.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
+           
+
            // Course course = db.Courses.Find(id);
             Course course = db.Courses
                .Include(s => s.School)
+               .Include(s => s.SchoolClasses.Select(sc => sc.Teacher))
                .SingleOrDefault(c => c.Id == id);
                 //.Where(c => c.Id == id).FirstOrDefault();
 

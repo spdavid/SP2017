@@ -47,7 +47,8 @@
                     foreach (SchoolClass item in courseItem.SchoolClasses.OrderBy(sc=>sc.Name))
                     {
                        
-                        if (((List<int>)ViewBag.StudentCourses).Contains(item.Id))
+                        // 1,3,5
+                        if (((List<int>)ViewBag.StudentClasses).Contains(item.Id))
                         {
                             <input type="checkbox" name="Classes" value="@item.Id" checked="checked" /> @item.Name <br />
 
