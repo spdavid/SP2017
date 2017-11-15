@@ -1,0 +1,136 @@
+﻿@model CodeFirstEntityFramework.Models.SchoolPage
+@using CodeFirstEntityFramework.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script>
+   
+
+    function ShowModalDialogDeleteSchool(SchoolId)
+    {
+        document.getElementById("hiddenSchoolId").value = SchoolId;
+
+        $('#SchoolDelete').modal();
+    }
+</script>
+
+<div class="row">
+
+    <div class="col-md-3" style="text-align:center">
+        <div style="display:inline-block"><h3>Schools</h3></div>
+        <button type="button" class="btn btn-default" aria-label="Left Align" data-toggle="modal" data-target="#SchoolAddModal">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+        <div class="list-group" style="margin:10px">
+
+            @foreach (School school in Model.Schools)
+            {
+                <div class="clearfix">
+                    <button type="button" onclick="window.location = 'Home?SchoolId=@school.Id'" style="width:80%; float:left;" class="list-group-item">@school.Name</button>
+                    <div style="width:20%; float:left;">
+                        <span class="glyphicon glyphicon-trash editlinks" aria-hidden="true" onclick="ShowModalDialogDeleteSchool(@school.Id)"></span>
+                        <span class="glyphicon glyphicon-pencil editlinks" aria-hidden="true"></span>
+                    </div>
+                </div>
+
+
+            }
+
+        </div>
+
+
+
+    </div>
+    <div class="col-md-3" style="text-align:center">
+        <h3>Course / Classes</h3>
+        @if (Model.Courses != null)
+        {
+            foreach (Course course in Model.Courses)
+            {
+                <h4>@course.Name</h4>
+
+                <div class="list-group" style="margin:10px">
+
+                    @foreach (SchoolClass schoolClass in course.SchoolClasses.OrderBy(sc => sc.Name))
+                    {
+                        <button class="btn btn-default" type="button" onclick="window.location = 'Home?SchoolId=@ViewBag.CurrentSchoolId&schoolClassId=@schoolClass.Id'" style="width:100%" class="list-group-item">@schoolClass.Name</button>
+                    }
+
+                </div>
+
+            }
+        }
+
+    </div>
+    <div class="col-md-3" style="text-align:center">
+        <h3>Students</h3>
+        @if (Model.Students != null)
+        {
+            <div class="list-group" style="margin:10px">
+
+                @foreach (Student student in Model.Students)
+                {
+                    <button type="button" style="width:100%" class="list-group-item">@student.Name</button>
+                }
+
+            </div>
+        }
+    </div>
+    <div class="col-md-3" style="text-align:center">
+        <h3>Teacher</h3>
+        @if (Model.Teacher != null)
+        {
+            <div>The teacher is @Model.Teacher.Name</div>
+        }
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="SchoolAddModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add School</h4>
+            </div>
+            <form action="/Home/AddSchool?SchoolId=@ViewBag.CurrentSchoolId&schoolClassId=@ViewBag.CurrentschoolClassId" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">School Name</label>
+                        <input type="text" class="form-control" name="SchoolName" placeholder="School Name">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add School</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<div class="modal fade" id="SchoolDelete" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Delete School</h4>
+            </div>
+            <form id="formDeleteSchool" action="/Home/DeleteSchool" method="post">
+                <div class="modal-body">
+                    Are you sure you want do delete this school?
+                    <input type="hidden" name="SchoolId" id="hiddenSchoolId" value="" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Delete School</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

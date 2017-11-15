@@ -17,6 +17,7 @@ namespace CodeFirstEntityFramework.Controllers
         // GET: SchoolClasses
         public ActionResult Index()
         {
+
             var schoolClasses = db.SchoolClasses.Include(s => s.Course).Include(s => s.Teacher);
             return View(schoolClasses.ToList());
         }
