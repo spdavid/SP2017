@@ -1,5 +1,5 @@
 ﻿@model CodeFirstEntityFramework.Models.School
-
+@using CodeFirstEntityFramework.Models;
 @{
     ViewBag.Title = "Details";
 }
@@ -46,3 +46,5 @@
         @Html.ActionLink("Back to List", "Index")
     </p>
 </div>
+
+@Html.Partial("_FavoriteStudents", new List<Student>())

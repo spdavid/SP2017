@@ -175,6 +175,9 @@
     <Content Include="Views\Students\Index.cshtml" />
     <Content Include="Views\ViewTest\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_FavoriteStudents.cshtml" />
+    <Content Include="Views\Shared\_SchoolInfo.cshtml" />
+    <Content Include="Views\Shared\FavoriteStudents.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

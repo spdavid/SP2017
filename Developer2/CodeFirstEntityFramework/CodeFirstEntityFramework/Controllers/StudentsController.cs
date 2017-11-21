@@ -20,6 +20,12 @@ namespace CodeFirstEntityFramework.Controllers
             return View(db.Students.ToList());
         }
 
+        public ActionResult FavoriteStudents()
+        {
+            return View(db.Students.ToList());
+        }
+
+
         // GET: Students/Details/5
         public ActionResult Details(int? id)
         {

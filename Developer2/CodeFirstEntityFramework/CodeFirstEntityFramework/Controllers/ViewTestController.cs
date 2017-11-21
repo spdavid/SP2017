@@ -17,6 +17,9 @@ namespace CodeFirstEntityFramework.Controllers
             return View();
         }
 
+
+
+
         [HttpPost]
         public ActionResult Index(School school, string Name)
         {

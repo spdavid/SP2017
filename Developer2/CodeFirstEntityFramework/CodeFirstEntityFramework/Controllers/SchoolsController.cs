@@ -17,6 +17,8 @@ namespace CodeFirstEntityFramework.Controllers
         // GET: Schools
         public ActionResult Index()
         {
+            ViewBag.FavStudents = db.Students.Where(s => s.Name.StartsWith("D")).ToList();
+
             return View(db.Schools.ToList());
         }
 

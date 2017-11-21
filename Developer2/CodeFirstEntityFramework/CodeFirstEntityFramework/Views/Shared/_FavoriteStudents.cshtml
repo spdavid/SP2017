@@ -1,0 +1,16 @@
+﻿@model List<CodeFirstEntityFramework.Models.Student>
+    @using CodeFirstEntityFramework.Models;
+
+
+<div>this is a partial view</div>
+@if (Model != null)
+{
+foreach (Student item in Model)
+{
+    <div>@item.Name</div>
+    }
+}
+else
+{
+    <div>There are no favorit students</div>
+}
