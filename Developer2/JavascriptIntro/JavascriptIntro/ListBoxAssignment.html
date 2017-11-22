@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/ListBoxAssignment.js"></script>
+    <style>
+        .floatLeft
+        {
+            float:left;
+        }
+
+        .buttonpanel
+        {
+           padding:20px 10px 10px 10px;
+           
+        }
+        .buttonpanel input
+        {
+            margin-top:10px;
+        }
+
+
+    </style>
+</head>
+<body>
+   
+    <div class="floatLeft">
+    <select style="width:400px" size="10" id="leftSelect" name="decision2">
+        <option>Plan 1</option>
+        <option>Plan 2</option>
+        <option>Plan 3</option>
+        <option>Plan 4</option>
+        <option>Plan 5</option>
+    </select>
+    </div>
+    <div class="floatLeft buttonpanel">
+        <input type="button" value="-->" onclick="moveItem('right')" />
+        <br />
+        <input type="button" value="<--" onclick="moveItem('left')" />
+    </div>
+    <div class="floatLeft">
+        <select style="width:400px" size="10"  id="rightSelect" name="decision2"></select>
+    </div>
+    <br style="clear:both" />
+    <div class="floatLeft">
+        <select style="width:400px" multiple size="10" id="leftSelectMulti" name="decision2">
+            <option>Plan 1</option>
+            <option>Plan 2</option>
+            <option>Plan 3</option>
+            <option>Plan 4</option>
+            <option>Plan 5</option>
+        </select>
+    </div>
+    <div class="floatLeft buttonpanel">
+        <input type="button" value="-->" onclick="moveItemMulti('right')" />
+        <br />
+        <input type="button" value="<--" onclick="moveItemMulti('left')" />
+    </div>
+    <div class="floatLeft">
+        <select style="width:400px" multiple size="10" id="rightSelectMulti" name="decision2"></select>
+    </div>
+</body>
+</html>
