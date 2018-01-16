@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyFirstConsoleSPApplication.CodeExamples
 {
-   public class CSOM101
+    public class CSOM101
     {
         public static void GetWebTitle(ClientContext context)
         {
@@ -24,8 +24,8 @@ namespace MyFirstConsoleSPApplication.CodeExamples
             // the properties we want from the web object
             Web w2 = context.Web;
             // only get the propeties you need
-            context.Load(w2, 
-                w => w.Title, 
+            context.Load(w2,
+                w => w.Title,
                 w => w.Url);
             // Goes and gets it. 
             context.ExecuteQuery();
@@ -45,21 +45,51 @@ namespace MyFirstConsoleSPApplication.CodeExamples
 
         }
 
-        public static void ListAllLists (ClientContext ctx)
+        public static void ListAllLists(ClientContext ctx)
         {
             ListCollection lists = ctx.Web.Lists;
             // ctx.Load(lists); Takes longer as it gets everything
+
             ctx.Load(lists, lsts => lsts.Include(
                 l => l.Title,
-                l => l.DefaultViewUrl));
+                l => l.DefaultViewUrl,
+                l => l.Hidden));
             ctx.ExecuteQuery();
 
 
             foreach (var list in lists)
             {
+                //if (!list.Hidden)
+                //{
                 Console.WriteLine(list.Title);
                 Console.WriteLine(list.DefaultViewUrl);
+                //}
+            }
 
+        }
+
+        public static void ListAllListsNotHidden(ClientContext ctx)
+        {
+            ListCollection lists = ctx.Web.Lists;
+            // ctx.Load(lists); Takes longer as it gets everything
+            var results = ctx.LoadQuery(lists.Where(list => list.Hidden == false));
+            ctx.ExecuteQuery();
+            foreach (var list in results)
+            {
+                ctx.Load(list, l => l.DefaultViewUrl);
+            }
+
+            ctx.ExecuteQuery();
+
+
+
+            foreach (var list in results)
+            {
+                //if (!list.Hidden)
+                //{
+                Console.WriteLine(list.Title);
+                Console.WriteLine(list.DefaultViewUrl);
+                //}
             }
 
         }
@@ -83,7 +113,7 @@ namespace MyFirstConsoleSPApplication.CodeExamples
             ctx.Web.Context.ExecuteQuery();
 
             // same as below
-           // if (results.Count() > 0)
+            // if (results.Count() > 0)
             if (!results.Any())
             {
                 ListCreationInformation info = new ListCreationInformation();
@@ -101,6 +131,51 @@ namespace MyFirstConsoleSPApplication.CodeExamples
             }
         }
 
+        public static void CreateTaskList(ClientContext ctx)
+        {
+            ListCreationInformation info = new ListCreationInformation();
+            info.Title = "My Tasks";
+            info.Url = "lists/mytasks";
+            info.TemplateType = (int)ListTemplateType.Tasks;
+            // or  info.TemplateType = 107;
+            ctx.Web.Lists.Add(info);
+
+            ctx.ExecuteQuery();
+        }
+
+        public static void AddToLeftNav(ClientContext ctx)
+        {
+            NavigationNodeCreationInformation nodeInfo = new NavigationNodeCreationInformation();
+            nodeInfo.Url = "https://www.google.com";
+            nodeInfo.Title = "Google";
+            nodeInfo.AsLastNode = true;
+            ctx.Web.Navigation.QuickLaunch.Add(nodeInfo);
+
+            ctx.ExecuteQuery();
+        }
+
+
+        public static void DiplayTitlesFromList(ClientContext ctx, string listName)
+        {
+          ListItemCollection items = ctx.Web.Lists.GetByTitle(listName).GetItems(CamlQuery.CreateAllItemsQuery());
+            ctx.Load(items);
+            ctx.ExecuteQuery();
+
+            foreach (var item in items)
+            {
+                Console.WriteLine(item["Title"].ToString());
+            }
+        }
+
+        public static void AddItemToList(ClientContext ctx, string listName)
+        {
+
+           ListItem item = ctx.Web.Lists.GetByTitle(listName).AddItem(new ListItemCreationInformation());
+            item["Title"] = "Hello World";
+            item.Update();
+            ctx.ExecuteQuery();
+
+        }
 
     }
 }
