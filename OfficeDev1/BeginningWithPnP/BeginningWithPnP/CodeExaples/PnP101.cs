@@ -24,7 +24,9 @@ namespace BeginningWithPnP.CodeExaples
 
         public static void CreateTaskList(ClientContext ctx)
         {
-            ctx.Web.CreateList(ListTemplateType.Tasks, "pnptasklist", false, true, "lists/mytasks2");
+            // ctx.Web.CreateList(ListTemplateType.Tasks, "pnptasklist", false, true, "lists/mytasks2");
+             ctx.Web.CreateList(ListTemplateType.Tasks, "pnptasklist", true, urlPath:"lists/mytasks2");
+
         }
 
         public static void AddToLeftNav(ClientContext ctx)
