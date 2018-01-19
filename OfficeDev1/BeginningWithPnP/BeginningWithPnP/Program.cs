@@ -16,9 +16,9 @@ namespace BeginningWithPnP
             {
                 //PnP101.CreateAList(ctx, "Davids pnp List");
                 //PnP101.CreateTaskList(ctx);
-                // PnP101.AddToLeftNav(ctx);
-                // PnP101.CreateSubSite(ctx);
-              //  PnP101.AddSharePointGroup(ctx);
+                //PnP101.AddToLeftNav(ctx);
+                //PnP101.CreateSubSite(ctx);
+                //PnP101.AddSharePointGroup(ctx);
                 //PnP101.AddFolderToDocLibrary(ctx);
             }
 
