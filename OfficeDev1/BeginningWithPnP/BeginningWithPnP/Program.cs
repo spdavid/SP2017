@@ -19,8 +19,12 @@ namespace BeginningWithPnP
                 // PnP101.AddToLeftNav(ctx);
                 // PnP101.CreateSubSite(ctx);
               //  PnP101.AddSharePointGroup(ctx);
-                PnP101.AddFolderToDocLibrary(ctx);
+                //PnP101.AddFolderToDocLibrary(ctx);
             }
+
+            string url = "http://somesite:1234";
+
+            Uri uri = new Uri("http://somesite:1234");
 
             Console.WriteLine("Press enter");
             Console.ReadLine();
