@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pnp:ProvisioningTemplate ID="CountryStuff" Version="1.0"
+      xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+  
+
+  
+  
+      <pnp:SiteFields>
+        <Field ID="{8C545967-2DAD-4DC6-AB36-6C4F377361FD}" Type="Text" Name="DAV_CountryLocation" DisplayName="Location" Group="a Group of columns" MaxLength="255" AllowDeletion="TRUE" />
+        <Field ID="{9721827A-6766-4A79-B84F-30F29ED5A96C}" Type="Number" Name="DAV_PopulationCount" DisplayName="Number of people" Min="3" Max="1000000" Group="a Group of columns"  />
+      </pnp:SiteFields>
+
+      <pnp:ContentTypes>
+        <pnp:ContentType ID="0x01009B506309310F4094A1BDD8BD0FBE4A95"                 
+                         Name="Country"
+                          Group="a gruop of cts"
+                          Description="Content Type for counries">
+          <pnp:FieldRefs>
+            <!-- DAV_CountryLocation -->
+            <pnp:FieldRef ID="{8C545967-2DAD-4DC6-AB36-6C4F377361FD}" />
+            <!-- DAV_PopulationCount -->
+            <pnp:FieldRef ID="{9721827A-6766-4A79-B84F-30F29ED5A96C}"  />
+          </pnp:FieldRefs>
+        </pnp:ContentType>
+      </pnp:ContentTypes>
+  
+        <pnp:Lists>
+        <pnp:ListInstance Title="Countries"
+                    Description="List of countries"
+                    OnQuickLaunch="true"
+                    TemplateType="100"
+                    Url="Lists/Countries"
+                    EnableVersioning="false"
+                    RemoveExistingContentTypes="true">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01009B506309310F4094A1BDD8BD0FBE4A95" Default="true"/>
+          </pnp:ContentTypeBindings>
+        </pnp:ListInstance>
+        </pnp:Lists>
+
+     
+      
+      
+      
+</pnp:ProvisioningTemplate>
