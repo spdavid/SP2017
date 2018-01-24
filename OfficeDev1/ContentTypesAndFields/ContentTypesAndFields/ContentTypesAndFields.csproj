@@ -154,6 +154,7 @@
   <ItemGroup>
     <Compile Include="CodeExamples\Constants.cs" />
     <Compile Include="CodeExamples\ContentTypeFun.cs" />
+    <Compile Include="CodeExamples\ContentTypesAssignment.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

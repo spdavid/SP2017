@@ -13,7 +13,8 @@ namespace ContentTypesAndFields
         {
             using (var ctx = Common.Helpers.ContextHelper.GetClientContext("https://folkis2017.sharepoint.com/sites/David/"))
             {
-                ContentTypeFun.MyFirstContentType(ctx);
+                // ContentTypeFun.MyFirstContentType(ctx);
+                ContentTypesAssignment.CreateBookCT(ctx);
 
             }
         }
