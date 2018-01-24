@@ -14,7 +14,11 @@ namespace ContentTypesAndFields
             using (var ctx = Common.Helpers.ContextHelper.GetClientContext("https://folkis2017.sharepoint.com/sites/David/"))
             {
                 // ContentTypeFun.MyFirstContentType(ctx);
-                ContentTypesAssignment.CreateBookCT(ctx);
+                //ContentTypesAssignment.CreateBookCT(ctx);
+                // ContentTypesAssignment.CreateCV(ctx);
+                //ContentTypesAssignment.RenameTitleFieldonCV(ctx);
+                //ContentTypesAssignment.TurnOnMajorandMinorVersions(ctx);
+                ContentTypesAssignment.CreateView(ctx);
 
             }
         }

@@ -2,6 +2,7 @@
 using OfficeDevPnP.Core.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -141,6 +142,209 @@ namespace ContentTypesAndFields.CodeExamples
 
 
 
+        }
+
+
+
+        public static void CreateCV(ClientContext ctx)
+        {
+
+
+            //Create a Content Type Called CV that inherits from Document
+            //	1. Title - Exists already
+            //	2. Picture - Picture Column 
+            //	3. User - Person Field
+            //	4.  Is Active - Yes / No
+
+
+            // doc content type = 0x0101
+            // seperator 00
+            // new guid {0F34D58A-C07F-4660-82CF-A31B4AF3B231}
+            string CVCT = "0x0101000F34D58AC07F466082CFA31B4AF3B231";
+
+            Web web = ctx.Site.RootWeb;
+
+           
+            if (!web.ContentTypeExistsById(CVCT))
+            {
+                web.CreateContentType("CV", CVCT, "a Davids ContentTypes");
+            }
+
+
+
+            string pictureFieldId = "{5FD1BD7D-C223-4584-9F8E-2F372F9D7B79}";
+
+            if (!web.FieldExistsById(new Guid(pictureFieldId)))
+            {
+                FieldCreationInformation info = new FieldCreationInformation(FieldType.URL);
+                info.Id = pictureFieldId.ToGuid();
+                info.InternalName = "DAV_Pic";
+                info.DisplayName = "Picture";
+                info.Group = "a Davids Columns";
+                FieldUrl picField = web.CreateField<FieldUrl>(info);
+                picField.DisplayFormat = UrlFieldFormatType.Image;
+                picField.Update();
+                ctx.ExecuteQuery();
+
+            }
+
+            string userieldId = "{25C045F9-F97A-4B7B-AAB5-876A216DCFC9}";
+
+            if (!web.FieldExistsById(new Guid(userieldId)))
+            {
+                FieldCreationInformation info = new FieldCreationInformation(FieldType.User);
+                info.Id = userieldId.ToGuid();
+                info.InternalName = "DAV_User";
+                info.DisplayName = "User";
+                info.Group = "a Davids Columns";
+                FieldUser userField = web.CreateField<FieldUser>(info);
+                userField.SelectionMode = FieldUserSelectionMode.PeopleOnly;
+                ctx.ExecuteQuery();
+
+            }
+          
+            string isActiveid = "{AC949E82-2235-4EDB-A630-3D13C10EF28E}";
+
+            if (!web.FieldExistsById(new Guid(isActiveid)))
+            {
+                FieldCreationInformation info = new FieldCreationInformation(FieldType.Boolean);
+                info.Id = isActiveid.ToGuid();
+                info.InternalName = "DAV_IsActive";
+                info.DisplayName = "Is Active";
+                info.Group = "a Davids Columns";
+                web.CreateField(info);
+            }
+
+
+            web.AddFieldToContentTypeById(CVCT, pictureFieldId);
+            web.AddFieldToContentTypeById(CVCT, userieldId);
+            web.AddFieldToContentTypeById(CVCT, isActiveid);
+
+            if (!web.ListExists("CVs"))
+            {
+                List list = web.CreateList(ListTemplateType.DocumentLibrary, "CVs", true, enableContentTypes: true);
+                list.AddContentTypeToListById(CVCT); ;
+            }
+
+            List booksList = web.GetListByTitle("CVs");
+
+            User user = web.EnsureUser("david@folkis2017.onmicrosoft.com");
+            ctx.Load(user);
+            ctx.ExecuteQuery();
+
+
+            // adding a file to sharepoint
+            FileCreationInformation fileInfo = new FileCreationInformation();
+            System.IO.FileStream filestream = System.IO.File.OpenRead(@"C:\Users\david\source\repos\SP2017\OfficeDev1\ContentTypesAndFields\ContentTypesAndFields\file.txt");
+            fileInfo.Content = ReadFully(filestream);
+            fileInfo.Url = "file2.txt";
+            Microsoft.SharePoint.Client.File file =  booksList.RootFolder.Files.Add(fileInfo);
+            ctx.ExecuteQuery();
+
+            ListItem item = file.ListItemAllFields;
+            item["Title"] = "David";
+            // set the content type.
+            item["ContentTypeId"] = CVCT;
+            // seeting a url or picture link
+            FieldUrlValue picvalue = new FieldUrlValue();
+            picvalue.Description = "david";
+            picvalue.Url = "http://media.al.com/entertainment_impact/photo/TCDBAHA_FE002_H.JPG";
+            item["DAV_Pic"] = picvalue;
+            item["DAV_User"] = user.Id;
+            item["DAV_IsActive"] = true;
+           
+            item.Update();
+            ctx.ExecuteQueryRetry();
+
+        }
+
+
+        public static void RenameTitleFieldonCV(ClientContext ctx)
+        {
+            string CVCT = "0x0101000F34D58AC07F466082CFA31B4AF3B231";
+
+            
+            List list = ctx.Web.GetListByTitle("CVs");
+
+            ContentType ct = list.GetContentTypeByName("CV");
+            ctx.Load(ct.FieldLinks, flinks => flinks.Include(flink => flink.Name, flink => flink.DisplayName));
+            ctx.ExecuteQuery();
+
+
+         
+            foreach (var fl in ct.FieldLinks)
+            {
+                //ctx.Load(fl);
+                //ctx.ExecuteQuery();
+                
+                Console.WriteLine(fl.Name);
+                Console.WriteLine(fl.DisplayName);
+               
+
+                if (fl.Name == "Title")
+                {
+                    fl.DisplayName = "CV Description";
+                    ct.Update(false);
+                    ctx.ExecuteQuery();
+                }
+            }
+
+            Console.ReadLine();
+
+            
+
+        }
+
+        public static void TurnOnMajorandMinorVersions(ClientContext ctx)
+        {
+           
+
+            List list = ctx.Web.GetListByTitle("CVs");
+
+            list.EnableVersioning = true;
+            list.EnableMinorVersions = true;
+            list.ForceCheckout = true;
+            list.Update();
+            ctx.ExecuteQuery();
+
+           
+
+
+
+        }
+
+        public static void CreateView(ClientContext ctx)
+        {
+
+
+            List list = ctx.Web.GetListByTitle("CVs");
+
+            ViewCreationInformation info = new ViewCreationInformation();
+            info.ViewFields = new string[] { "Title", "DAV_User", "DAV_Pic", "DAV_IsActive" };
+            info.Title = "Active CVs";
+            info.Query = @"<Where><Eq><FieldRef Name='DAV_IsActive' /><Value Type='Integer'>1</Value></Eq></Where>"; 
+            list.Views.Add(info);
+            ctx.ExecuteQuery();
+
+
+
+
+
+        }
+
+
+        public static byte[] ReadFully(Stream input)
+        {
+            byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
         }
     }
 }
