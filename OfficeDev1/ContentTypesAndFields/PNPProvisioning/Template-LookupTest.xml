@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pnp:ProvisioningTemplate ID="CountryStuff" Version="1.0"
+      xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+
+  <!--Create a provisiong xml file and apply it to your site
+
+  1. Hockeyplayer Content type based on item
+  2. Add the fields to the web and content type
+  a. Position = Choice Field
+  b. Shirt Number = Number
+  c. TeamName = text
+  d. Description = note field
+  3. Create a list and add the content type to it-->
+
+
+
+
+  <pnp:SiteFields>
+    <Field ID="{0CCB3156-AC0D-49C5-AB7C-F8A357B53213}" Group="Davids columns" Required="FALSE"  StaticName="DA_AnimalType"  Type="Lookup" Name="DA_AnimalType" DisplayName="Animal Types" List="Lists/AnimalTypes" ShowField="Title" />
+  </pnp:SiteFields>
+
+
+  <pnp:Lists>
+    <pnp:ListInstance Title="Animal Types"
+                Description="Types of animals"
+                OnQuickLaunch="true"
+                TemplateType="100"
+                Url="Lists/AnimalTypes"
+                EnableVersioning="false">
+      <pnp:DataRows>
+        <pnp:DataRow>
+          <pnp:DataValue FieldName="Title">Type 1</pnp:DataValue>
+        </pnp:DataRow>
+        <pnp:DataRow>
+          <pnp:DataValue FieldName="Title">Type 2</pnp:DataValue>
+        </pnp:DataRow>
+        <pnp:DataRow>
+          <pnp:DataValue FieldName="Title">Type 3</pnp:DataValue>
+        </pnp:DataRow>
+      </pnp:DataRows>
+    </pnp:ListInstance>
+
+    <pnp:ListInstance Title="Animals"
+            Description="animals"
+            OnQuickLaunch="true"
+            TemplateType="100"
+            Url="Lists/Animals"
+            EnableVersioning="false">
+      <pnp:FieldRefs>
+        <!-- DAV_Position -->
+        <pnp:FieldRef ID="{0CCB3156-AC0D-49C5-AB7C-F8A357B53213}" />
+      </pnp:FieldRefs>
+    
+    </pnp:ListInstance>
+  </pnp:Lists>
+
+
+
+
+
+</pnp:ProvisioningTemplate>

@@ -20,7 +20,7 @@ namespace PNPProvisioning
             using (var ctx = Common.Helpers.ContextHelper.GetClientContext("https://folkis2017.sharepoint.com/sites/David/"))
             {
 
-                //Microsoft.SharePoint.Client.Field field = ctx.Web.GetFieldByInternalName("NOTETEST");
+                //Microsoft.SharePoint.Client.Field field = ctx.Web.GetFieldByInternalName("DA_Plant");
 
                 //Console.WriteLine(field.SchemaXml);
                 //Console.ReadLine();
@@ -28,7 +28,7 @@ namespace PNPProvisioning
 
 
                 XMLFileSystemTemplateProvider provider = new XMLFileSystemTemplateProvider(@"C:\Users\david\source\repos\SP2017\OfficeDev1\ContentTypesAndFields\PNPProvisioning", "");
-                string templateName = "Template-Hockey.xml";
+                string templateName = "Template-LookupTest.xml";
                 ProvisioningTemplate template = provider.GetTemplate(templateName);
                 ctx.Web.ApplyProvisioningTemplate(template);
 

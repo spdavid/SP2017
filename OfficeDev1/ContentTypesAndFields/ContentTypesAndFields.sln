@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PNPProvisioning", "PNPProvisioning\PNPProvisioning.csproj", "{8070CFB3-BF03-48A3-A156-DBE189B4F50C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LookupsandtaxonomyFields", "LookupsandtaxonomyFields\LookupsandtaxonomyFields.csproj", "{2ACFF6D9-8571-4726-9191-2A2FAD36530C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8070CFB3-BF03-48A3-A156-DBE189B4F50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8070CFB3-BF03-48A3-A156-DBE189B4F50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8070CFB3-BF03-48A3-A156-DBE189B4F50C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ACFF6D9-8571-4726-9191-2A2FAD36530C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ACFF6D9-8571-4726-9191-2A2FAD36530C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ACFF6D9-8571-4726-9191-2A2FAD36530C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ACFF6D9-8571-4726-9191-2A2FAD36530C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
