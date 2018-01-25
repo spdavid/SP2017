@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pnp:ProvisioningTemplate ID="CountryStuff" Version="1.0"
+      xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+
+  <!--Create a provisiong xml file and apply it to your site
+
+  1. Hockeyplayer Content type based on item
+  2. Add the fields to the web and content type
+  a. Position = Choice Field
+  b. Shirt Number = Number
+  c. TeamName = text
+  d. Description = note field
+  3. Create a list and add the content type to it-->
+
+
+
+
+  <pnp:SiteFields>
+    <Field ID="{ED585885-76CC-44F6-8424-E6E73BF44228}" Name="DAV_Position" Type="Choice" DisplayName="Position" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="RadioButtons" FillInChoice="FALSE" Group="Hockey"  >
+      <Default>Goalie</Default>
+      <CHOICES>
+        <CHOICE>Goalie</CHOICE>
+        <CHOICE>Center</CHOICE>
+        <CHOICE>RightWing</CHOICE>
+        <CHOICE>LeftWing</CHOICE>
+        <CHOICE>RightDef</CHOICE>
+        <CHOICE>LeftDef</CHOICE>
+      </CHOICES>
+    </Field>
+    <Field ID="{70B9D8D6-8F6C-4B0A-A054-13A1DE451997}" Type="Number" Name="DAV_ShirtNumber" DisplayName="ShirtNumber"  Group="Hockey"  />
+    <Field ID="{8DD0F41F-CE39-4B19-AADE-77C13A884CF1}" Type="Text" Name="DAV_TeamName" DisplayName="Location" Group="Hockey" MaxLength="255" AllowDeletion="TRUE" />
+    <Field ID="{5E98E8C5-8776-44DB-AFD9-FD06EB46DECD}"  Name="DAV_DESC2" Type="Note" DisplayName="Description" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="TRUE" RichTextMode="FullHtml" IsolateStyles="TRUE" Sortable="FALSE" Group="Hockey"  ></Field>
+  </pnp:SiteFields>
+
+  <pnp:ContentTypes>
+    <pnp:ContentType ID="0x01006042ADD397CD464DA06C5C0E8E6FFC55"
+                     Name="Hockey Player"
+                      Group="Hockey Players"
+                      Description="Hockey Players">
+      <pnp:FieldRefs>
+        <!-- DAV_Position -->
+        <pnp:FieldRef ID="{ED585885-76CC-44F6-8424-E6E73BF44228}" />
+        <!-- DAV_ShirtNumber -->
+        <pnp:FieldRef ID="{70B9D8D6-8F6C-4B0A-A054-13A1DE451997}"  />
+        <!-- DAV_TeamName -->
+        <pnp:FieldRef ID="{8DD0F41F-CE39-4B19-AADE-77C13A884CF1}"  />
+        <!-- DAV_DESC2 -->
+        <pnp:FieldRef ID="{5E98E8C5-8776-44DB-AFD9-FD06EB46DECD}"  />
+      </pnp:FieldRefs>
+    </pnp:ContentType>
+  </pnp:ContentTypes>
+
+  <pnp:Lists>
+    <pnp:ListInstance Title="Hockey Players"
+                Description="List of Playas"
+                OnQuickLaunch="true"
+                TemplateType="100"
+                Url="Lists/HockeyPLayers"
+                EnableVersioning="false"
+                RemoveExistingContentTypes="true">
+      <pnp:ContentTypeBindings>
+        <pnp:ContentTypeBinding ContentTypeID="0x01006042ADD397CD464DA06C5C0E8E6FFC55" Default="true"/>
+      </pnp:ContentTypeBindings>
+    </pnp:ListInstance>
+  </pnp:Lists>
+
+
+
+
+
+</pnp:ProvisioningTemplate>
