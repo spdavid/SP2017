@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pnp:ProvisioningTemplate ID="CountryStuff" Version="1.0"
+      xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+
+  <!--EmployeeType - custom list: it will contain a list of employee types (Contractor, Hourly, Permanent, project ect). Pre populate these values
+
+  Employee list : actuall employees
+  - Title - exists already in the item content type
+  - Employee - User Field
+  - Picture  - Picture field
+  - Linkedin Profile - Url Field
+  - Age - number field
+  - Education : choice field (Basic, Highschool, University etc)
+  - Employee Type - Lookup field. Should be pointing to the Employee type list.
+  - Manager : lookup field - Should lookup to the employee list-->
+
+
+
+
+
+  <pnp:SiteFields>
+    <Field ID="{B138CCED-0C9D-4F53-AD30-FE81A3364A09}" Group="Davids columns" Required="FALSE"  StaticName="DA_Employee"  Type="User" Name="DA_Employee" DisplayName="Employee"  />
+    <Field ID="{5FC7F44E-0988-4AB9-9C47-5144ADC450DC}" Type="URL" Name="DA_EmpPic" InternalName="DA_EmpPic" Format="Image" DisplayName="Picuter" Group="Davids Columns"  AllowDeletion="TRUE" StaticName="DA_EmpPic" />
+    <Field ID="{69D3BA37-FCDA-4B25-A298-EB83C8691ECA}" Type="URL" Name="DA_Linkedin" InternalName="DA_Linkedin" Format="Hyperlink" DisplayName="Linkedin Url" Group="Davids Columns"  AllowDeletion="TRUE" StaticName="DA_Linkedin" />
+    <Field ID="{FA95A626-3CFA-46DC-A6A2-73A6E9A60876}" Type="Number" Name="DAV_empage" DisplayName="age" Min="0" Max="120" Group="Davids Columns"  />
+    <Field ID="{0E5019D6-827B-42D4-BA93-9796FDCA92F8}" Name="DA_Education" Type="Choice" DisplayName="Education" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="RadioButtons" FillInChoice="FALSE" Group="Davids Columns"  >
+      <Default>HighSchool</Default>
+      <CHOICES>
+        <CHOICE>MiddleSchool</CHOICE>
+        <CHOICE>HighSchool</CHOICE>
+        <CHOICE>University</CHOICE>
+        <CHOICE>Degree</CHOICE>
+        <CHOICE>Doctors Degree</CHOICE>
+        <CHOICE>Other</CHOICE>
+      </CHOICES>
+    </Field>
+    <Field ID="{CEFFD070-1910-413B-933A-E1D987D37072}" 
+           Group="Davids columns" 
+           Required="FALSE"  
+           StaticName="DA_EmployeeType"  
+           Type="Lookup" 
+           Name="DA_EmployeeType" 
+           DisplayName="Employee type" 
+           List="Lists/EmployeeTypes" 
+           ShowField="Title" />
+    <Field ID="{A153B2B1-B9C4-4775-BA33-1749D1569478}"
+           Group="Davids columns"
+           Required="FALSE"
+           StaticName="DA_Manager"
+           Type="Lookup"
+           Name="DA_Manager"
+           DisplayName="Manager"
+           List="Lists/Employees"
+           ShowField="Title" />
+  </pnp:SiteFields>
+
+
+  <pnp:ContentTypes>
+    <pnp:ContentType ID="0x01005E8FADF069264DA39155FCAA737F3FE8"
+                     Name="Employee"
+                      Group="Davds Content Types"
+                      Description="List of employees">
+      <pnp:FieldRefs>
+        <!-- DA_Employee -->
+        <pnp:FieldRef ID="{B138CCED-0C9D-4F53-AD30-FE81A3364A09}" />
+        <!-- DA_EmpPic -->
+        <pnp:FieldRef ID="{5FC7F44E-0988-4AB9-9C47-5144ADC450DC}"  />
+        <!-- DA_Linkedin -->
+        <pnp:FieldRef ID="{69D3BA37-FCDA-4B25-A298-EB83C8691ECA}"  />
+        <!-- DAV_EmpAge-->
+        <pnp:FieldRef ID="{FA95A626-3CFA-46DC-A6A2-73A6E9A60876}"  />
+        <!-- DAV_Education-->
+        <pnp:FieldRef ID="{0E5019D6-827B-42D4-BA93-9796FDCA92F8}"  />
+        <!-- DAV_EmployeeTYpe-->
+        <pnp:FieldRef ID="{CEFFD070-1910-413B-933A-E1D987D37072}"  />
+        <!-- DA_Manager-->
+        <pnp:FieldRef ID="{A153B2B1-B9C4-4775-BA33-1749D1569478}"  />
+       
+      </pnp:FieldRefs>
+    </pnp:ContentType>
+  </pnp:ContentTypes>
+  
+
+  <pnp:Lists>
+    <pnp:ListInstance Title="Employee Types"
+                Description="Types of Employees"
+                OnQuickLaunch="true"
+                TemplateType="100"
+                Url="Lists/EmployeeTypes"
+                EnableVersioning="false">
+      <pnp:DataRows>
+        <pnp:DataRow>
+          <pnp:DataValue FieldName="Title">Permanent</pnp:DataValue>
+        </pnp:DataRow>
+        <pnp:DataRow>
+          <pnp:DataValue FieldName="Title">Hourly</pnp:DataValue>
+        </pnp:DataRow>
+        <pnp:DataRow>
+          <pnp:DataValue FieldName="Title">Part Time</pnp:DataValue>
+        </pnp:DataRow>
+        <pnp:DataRow>
+          <pnp:DataValue FieldName="Title">Consultant</pnp:DataValue>
+        </pnp:DataRow>
+      </pnp:DataRows>
+    </pnp:ListInstance>
+
+    <pnp:ListInstance Title="Employees"
+            Description="list of employees"
+            OnQuickLaunch="true"
+            TemplateType="100"
+            Url="Lists/Employees"
+            EnableVersioning="false"
+            RemoveExistingContentTypes="true">
+      <pnp:ContentTypeBindings>
+        <pnp:ContentTypeBinding ContentTypeID="0x01005E8FADF069264DA39155FCAA737F3FE8" Default="true"/>
+      </pnp:ContentTypeBindings>
+  
+    
+    </pnp:ListInstance>
+  </pnp:Lists>
+
+
+
+
+
+</pnp:ProvisioningTemplate>

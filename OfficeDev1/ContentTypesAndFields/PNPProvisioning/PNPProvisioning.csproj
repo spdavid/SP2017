@@ -166,6 +166,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Template-LookupAsignment.xml" />
     <Content Include="Template-LookupTest.xml" />
     <Content Include="Template-Hockey.xml" />
     <Content Include="Template.xml" />
