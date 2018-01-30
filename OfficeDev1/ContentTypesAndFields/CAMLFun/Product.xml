@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pnp:ProvisioningTemplate ID="CountryStuff" Version="1.0"
+      xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+
+  <!--- Title
+  - Price - number
+  - Product Type - choice
+  - Number in stock - number
+  - Expiry date- DATATIME
+  Year Created - number-->
+
+
+  <pnp:SiteFields>
+    <Field ID="{6321F0CA-F040-4B52-815E-6E3791B3F3ED}" 
+           Type="Number" 
+           Name="PROD_Price" 
+           DisplayName="Price"
+          Group="Product Columns"  />
+    <Field ID="{7516C18C-8810-42C2-9890-54FEA4A19C92}" 
+           Name="PROD_Type"
+           Type="Choice" 
+           DisplayName="Product Type" 
+           Indexed="FALSE" 
+      Format="RadioButtons" 
+           Group="Product Columns"  >
+      <Default>Dairy</Default>
+      <CHOICES>
+        <CHOICE>Dairy</CHOICE>
+        <CHOICE>Meet</CHOICE>
+        <CHOICE>Bread</CHOICE>
+        <CHOICE>Vegies</CHOICE>
+        <CHOICE>Other</CHOICE>
+      </CHOICES>
+    </Field>
+    <Field ID="{7D91E611-71D1-4CEB-9773-BC361B62BBC2}"
+         Type="Number"
+         Name="PROD_InStock"
+         DisplayName="Number in stock"
+        Group="Product Columns"  />
+    <Field ID="{5EEBBA20-8910-4E20-9816-BCBA98197A21}" 
+           Type="DateTime" 
+           Name="PROD_Expiry" 
+           Format="DateOnly" 
+           DisplayName="Expiry Date" 
+           Description="Expiry date"
+         Group="Product Columns" 
+           />
+    <Field ID="{4D45E695-C3BA-4628-B2FA-D23EF40876E3}"
+         Type="Number"
+         Name="PROD_Year"
+         DisplayName="Year Created"
+        Group="Product Columns"  />
+  </pnp:SiteFields>
+  
+  <pnp:Lists>
+   
+    <pnp:ListInstance Title="Products"
+            Description="Products"
+            OnQuickLaunch="true"
+            TemplateType="100"
+            Url="Lists/Products"
+            EnableVersioning="false">
+      <pnp:FieldRefs>
+        <!-- Price -->
+        <pnp:FieldRef ID="{6321F0CA-F040-4B52-815E-6E3791B3F3ED}" />
+        <!-- Prod_Type -->
+        <pnp:FieldRef ID="{7516C18C-8810-42C2-9890-54FEA4A19C92}" />
+        <!-- PROD_InStock -->
+        <pnp:FieldRef ID="{7D91E611-71D1-4CEB-9773-BC361B62BBC2}" />
+        <!-- PROD_Expiry -->
+        <pnp:FieldRef ID="{5EEBBA20-8910-4E20-9816-BCBA98197A21}" />
+        <!-- PROD_Year -->
+        <pnp:FieldRef ID="{4D45E695-C3BA-4628-B2FA-D23EF40876E3}" />
+    
+      </pnp:FieldRefs>
+
+    </pnp:ListInstance>
+  </pnp:Lists>
+
+
+
+</pnp:ProvisioningTemplate>
