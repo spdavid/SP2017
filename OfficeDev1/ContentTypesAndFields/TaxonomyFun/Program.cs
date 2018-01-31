@@ -27,8 +27,80 @@ namespace TaxonomyFun
                 //ctx.Web.ApplyProvisioningTemplate(template);
 
 
-                UpdatingTaxonomyField(ctx);
+                //UpdatingTaxonomyField(ctx);
+
+                //var view = ctx.Web.GetListByTitle("Super Heros").DefaultView;
+                //  ctx.Load(view);
+                //  ctx.ExecuteQuery();
+                // ctx.Web.GetListByTitle("Super Heros").DeleteObject();
+
+                //ctx.ExecuteQuery();
+
+
+
+                // super heros assignment
+                //XMLFileSystemTemplateProvider provider = new XMLFileSystemTemplateProvider(@"C:\Users\david\source\repos\SP2017\OfficeDev1\ContentTypesAndFields\TaxonomyFun", "");
+                //string templateName = "TemplateSuperHeros.xml";
+                //ProvisioningTemplate template = provider.GetTemplate(templateName);
+                //ctx.Web.ApplyProvisioningTemplate(template);
+
+                //  AddToSUperHeroList(ctx);
+                ReadToSUperHeroList(ctx);
+                Console.ReadLine();
             }
+        }
+
+        private static void ReadToSUperHeroList(ClientContext ctx)
+        {
+            var list = ctx.Web.GetListByTitle("Super Heros");
+
+            ListItemCollection items = list.GetItems(CamlQuery.CreateAllItemsQuery());
+
+            ctx.Load(items);
+            ctx.ExecuteQuery();
+
+            foreach(ListItem item in items)
+            {
+                if (item["Title"] != null)
+                    Console.WriteLine(item["Title"].ToString());
+
+                var superPows =  item["DA_SuperPow"] as TaxonomyFieldValue;
+                Console.WriteLine(superPows.Label);
+
+                var weapons = item["DA_Weapon"] as TaxonomyFieldValueCollection;
+                foreach (var weapon in weapons)
+                {
+                    Console.WriteLine(weapon.Label);
+                }
+            }
+        }
+
+        static void AddToSUperHeroList(ClientContext ctx)
+        {
+            var list = ctx.Web.GetListByTitle("Super Heros");
+
+            var store =  ctx.Site.GetDefaultSiteCollectionTermStore();
+            var superPowerTerm = store.GetTerm("{95194EEC-E537-4BB0-AC3C-82BA4B56B56A}".ToGuid());
+            var weapon1term = store.GetTerm("{F7735448-B8AD-4528-B989-CD76AC23C835}".ToGuid());
+            var weapon2term = store.GetTerm("{B2841C21-CA5A-4F9D-9B94-FD242AF7A9C2}".ToGuid());
+            ctx.Load(superPowerTerm);
+            ctx.Load(weapon1term);
+            ctx.Load(weapon2term);
+            ctx.ExecuteQuery();
+
+            List<KeyValuePair<Guid, String>> weapons = new List<KeyValuePair<Guid, string>>();
+            weapons.Add(new KeyValuePair<Guid, string>(weapon1term.Id, weapon1term.Name));
+            weapons.Add(new KeyValuePair<Guid, string>(weapon2term.Id, weapon2term.Name));
+
+            ListItem item = list.AddItem(new ListItemCreationInformation());
+            item["Title"] = "Wolverine";
+            item.Update();
+
+            item.SetTaxonomyFieldValue("{E6D17C98-DFC0-4A20-B644-A4AEDEC1C2C5}".ToGuid(), superPowerTerm.Name, superPowerTerm.Id);
+            item.SetTaxonomyFieldValues("{E9DBD5B5-3DC2-4057-91A8-BAC03C02EF8F}".ToGuid(), weapons);
+
+            ctx.ExecuteQuery();
+
         }
 
         static void ReadingFromTaxonomyField(ClientContext ctx)

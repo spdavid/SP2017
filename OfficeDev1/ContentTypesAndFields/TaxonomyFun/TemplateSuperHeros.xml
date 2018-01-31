@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pnp:ProvisioningTemplate ID="CountryStuff" Version="1.0"
+      xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+
+  <pnp:TermGroups>
+    <pnp:TermGroup Name="David2" ID="{391649DC-A6D2-48F6-BF42-63E65336CDBC}">
+      <pnp:TermSets>
+        <pnp:TermSet Name="SuperPowers" ID="{7A3591C2-9B02-4FAF-938C-39AE6E87502E}" Language="1033">
+          <pnp:Terms>
+            <pnp:Term Name="Flying" ID="{2249FA79-BECA-4E85-8B80-D5044D1B2C70}" />
+            <pnp:Term Name="Mind Control" ID="{23F6EEF6-A45F-404E-8E62-2914FD7D68BF}" />
+            <pnp:Term Name="Magnatism" ID="{C7A4020C-E0FB-4724-948D-7E9213E2C264}" />
+            <pnp:Term Name="Fire" ID="{D518DC8E-D881-4E40-A8DB-E2F4346484C6}" />
+            <pnp:Term Name="Hand claws" ID="{95194EEC-E537-4BB0-AC3C-82BA4B56B56A}" />
+          </pnp:Terms>
+        </pnp:TermSet>
+        <pnp:TermSet Name="Weapons" ID="{5AEA2DDE-2C94-4070-80BE-076D435768FC}" Language="1033">
+          <pnp:Terms>
+            <pnp:Term Name="Swords" ID="{4A448C9C-57EE-415E-ABC9-E0296DAED527}" />
+            <pnp:Term Name="Hands" ID="{F7735448-B8AD-4528-B989-CD76AC23C835}" />
+            <pnp:Term Name="Feet" ID="{B2841C21-CA5A-4F9D-9B94-FD242AF7A9C2}" />
+            <pnp:Term Name="Nunchucks" ID="{A945D4BB-958A-4EB5-9880-22416E6B0316}" />
+            <pnp:Term Name="Guns" ID="{382744A0-5CB5-4293-85B6-080D9F9DD2A3}" />
+          </pnp:Terms>
+        </pnp:TermSet>
+      </pnp:TermSets>
+    </pnp:TermGroup>
+  </pnp:TermGroups>
+
+
+
+  <pnp:SiteFields>
+    <Field ID="{859B3E10-8511-47B6-8748-538BA9FB5090}" Type="Note" DisplayName="SuperPowers_0" StaticName="DA_SuperPowHid" Name="DA_SuperPowHid"  ShowInViewForms="FALSE" Required="FALSE" Hidden="TRUE" CanToggleHidden="TRUE" />
+    <Field ID="{E6D17C98-DFC0-4A20-B644-A4AEDEC1C2C5}"
+           Type="TaxonomyFieldType"
+           DisplayName="Super Power"
+           Name="DA_SuperPow"
+           StaticName="DA_SuperPow"
+           ShowField="Term1033"
+           Required="FALSE"
+           EnforceUniqueValues="FALSE"
+           Group="Davids Fields" >
+      <Customization>
+        <ArrayOfProperty>
+          <Property>
+            <Name>SspId</Name>
+            <Value xmlns:q1="http://www.w3.org/2001/XMLSchema" p4:type="q1:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{sitecollectiontermstoreid}</Value>
+          </Property>
+          <Property>
+            <Name>TermSetId</Name>
+            <Value xmlns:q2="http://www.w3.org/2001/XMLSchema" p4:type="q2:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{termsetid:David2:SuperPowers}</Value>
+          </Property>
+          <Property>
+            <Name>TextField</Name>
+            <Value xmlns:q6="http://www.w3.org/2001/XMLSchema" p4:type="q6:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{859B3E10-8511-47B6-8748-538BA9FB5090}</Value>
+          </Property>
+          <Property>
+            <Name>IsPathRendered</Name>
+            <Value xmlns:q7="http://www.w3.org/2001/XMLSchema" p4:type="q7:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+          <Property>
+            <Name>IsKeyword</Name>
+            <Value xmlns:q8="http://www.w3.org/2001/XMLSchema" p4:type="q8:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+        </ArrayOfProperty>
+      </Customization>
+    </Field>
+
+
+    <Field ID="{B4829B0D-CCF7-49D3-A390-AE5564183F20}" Type="Note" DisplayName="Weapons_0" StaticName="DA_WeaponHid" Name="DA_WeaponHid"  ShowInViewForms="FALSE" Required="FALSE" Hidden="TRUE" CanToggleHidden="TRUE" />
+    <Field ID="{E9DBD5B5-3DC2-4057-91A8-BAC03C02EF8F}"
+           Type="TaxonomyFieldTypeMulti"
+           DisplayName="Weapons"
+           Name="DA_Weapon"
+           StaticName="DA_Weapon"
+           ShowField="Term1033"
+           Required="FALSE"
+           EnforceUniqueValues="FALSE"
+           Group="Davids Fields"
+           Mult="TRUE">
+      <Customization>
+        <ArrayOfProperty>
+          <Property>
+            <Name>SspId</Name>
+            <Value xmlns:q1="http://www.w3.org/2001/XMLSchema" p4:type="q1:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{sitecollectiontermstoreid}</Value>
+          </Property>
+          <Property>
+            <Name>TermSetId</Name>
+            <Value xmlns:q2="http://www.w3.org/2001/XMLSchema" p4:type="q2:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{termsetid:David2:Weapons}</Value>
+          </Property>
+          <Property>
+            <Name>TextField</Name>
+            <Value xmlns:q6="http://www.w3.org/2001/XMLSchema" p4:type="q6:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{B4829B0D-CCF7-49D3-A390-AE5564183F20}</Value>
+          </Property>
+          <Property>
+            <Name>IsPathRendered</Name>
+            <Value xmlns:q7="http://www.w3.org/2001/XMLSchema" p4:type="q7:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+          <Property>
+            <Name>IsKeyword</Name>
+            <Value xmlns:q8="http://www.w3.org/2001/XMLSchema" p4:type="q8:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+        </ArrayOfProperty>
+      </Customization>
+    </Field>
+  </pnp:SiteFields>
+
+  <pnp:ContentTypes>
+    <pnp:ContentType ID="0x0100E2DF1987394F4282A8C6F45282AC6165" Name="Super Hero" Description="" Group="Davids Contenet Types">
+      <pnp:FieldRefs>
+        <pnp:FieldRef ID="{E6D17C98-DFC0-4A20-B644-A4AEDEC1C2C5}" Required="true" />
+        <pnp:FieldRef ID="{E9DBD5B5-3DC2-4057-91A8-BAC03C02EF8F}" Required="true" />
+      </pnp:FieldRefs>
+    </pnp:ContentType>
+  </pnp:ContentTypes>
+
+  <pnp:Lists>
+    <pnp:ListInstance Title="Super Heros"
+                Description=""
+                OnQuickLaunch="true"
+                TemplateType="100"
+                Url="Lists/SuperHeros"
+                EnableVersioning="false"
+                RemoveExistingContentTypes="true"
+                EnableFolderCreation="0"
+                >
+      <pnp:ContentTypeBindings>
+        <pnp:ContentTypeBinding ContentTypeID="0x0100E2DF1987394F4282A8C6F45282AC6165" Default="true"/>
+      </pnp:ContentTypeBindings>
+      <pnp:Views RemoveExistingViews="true">
+          <View Name="{99CB00BC-B33E-4FD0-A437-9F4AB2967914}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="/sites/David/Lists/SuperHeros/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=44" >
+            <Query>
+              <OrderBy>
+                <FieldRef Name="ID" />
+              </OrderBy>
+            </Query>
+            <ViewFields>
+              <FieldRef Name="LinkTitle" />
+              <FieldRef Name="DA_SuperPow" />
+              <FieldRef Name="DA_Weapon" />
+            </ViewFields>
+            <RowLimit Paged="TRUE">30</RowLimit>
+            <JSLink>clienttemplates.js</JSLink>
+            <XslLink Default="TRUE">main.xsl</XslLink>
+            <Toolbar Type="Standard"/>
+          </View>
+      </pnp:Views>
+    </pnp:ListInstance>
+  </pnp:Lists>
+
+
+</pnp:ProvisioningTemplate>
