@@ -21,13 +21,61 @@ namespace TaxonomyFun
                 // CreateTaxonomyField(ctx);
 
 
-                XMLFileSystemTemplateProvider provider = new XMLFileSystemTemplateProvider(@"C:\Users\david\source\repos\SP2017\OfficeDev1\ContentTypesAndFields\TaxonomyFun", "");
-                string templateName = "Template.xml";
-                ProvisioningTemplate template = provider.GetTemplate(templateName);
-                ctx.Web.ApplyProvisioningTemplate(template);
+                //XMLFileSystemTemplateProvider provider = new XMLFileSystemTemplateProvider(@"C:\Users\david\source\repos\SP2017\OfficeDev1\ContentTypesAndFields\TaxonomyFun", "");
+                //string templateName = "Template.xml";
+                //ProvisioningTemplate template = provider.GetTemplate(templateName);
+                //ctx.Web.ApplyProvisioningTemplate(template);
 
+
+                UpdatingTaxonomyField(ctx);
             }
         }
+
+        static void ReadingFromTaxonomyField(ClientContext ctx)
+        {
+            // i have added one document manually after the xml import. 
+           List list = ctx.Web.GetListByTitle("Important documents");
+           ListItem item = list.GetItemById(2);
+            ctx.Load(item);
+
+            ctx.ExecuteQuery();
+
+            TaxonomyFieldValue taxValue = item["DA_DOCTYPE"] as TaxonomyFieldValue;
+            Console.WriteLine(taxValue.Label);
+            Console.ReadLine();
+        }
+
+
+        static void UpdatingTaxonomyField(ClientContext ctx)
+        {
+            // i have added one document manually after the xml import. 
+            List list = ctx.Web.GetListByTitle("Important documents");
+            ListItem item = list.GetItemById(2);
+            ctx.Load(item);
+            ctx.ExecuteQuery();
+
+            
+            TermStore store = ctx.Site.GetDefaultSiteCollectionTermStore();
+            var term = store.GetTerm("{36575A1B-B081-4964-A50B-53841F741D5F}".ToGuid());
+            ctx.Load(term);
+            ctx.ExecuteQuery();
+            // non pnp way.
+            //TaxonomyField field = list.GetFieldById<TaxonomyField>("{A76D725F-8324-4152-AB83-4920E4342368}".ToGuid());
+            // field.SetFieldValueByTerm(item, term, 1033);
+         
+
+            // pnp way
+            item.SetTaxonomyFieldValue("{A76D725F-8324-4152-AB83-4920E4342368}".ToGuid(), term.Name, term.Id);
+
+
+
+            item.Update();
+             ctx.ExecuteQuery();
+
+
+            Console.ReadLine();
+        }
+
 
         static void CreateTaxonomyField(ClientContext ctx)
         {
