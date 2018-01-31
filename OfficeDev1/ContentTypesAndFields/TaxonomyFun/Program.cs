@@ -1,6 +1,8 @@
 ﻿using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
 using OfficeDevPnP.Core.Entities;
+using OfficeDevPnP.Core.Framework.Provisioning.Model;
+using OfficeDevPnP.Core.Framework.Provisioning.Providers.Xml;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +18,14 @@ namespace TaxonomyFun
             using (var ctx = Common.Helpers.ContextHelper.GetClientContext("https://folkis2017.sharepoint.com/sites/David/"))
             {
                 // CreateTerms(ctx);
-                CreateTaxonomyField(ctx);
+                // CreateTaxonomyField(ctx);
+
+
+                XMLFileSystemTemplateProvider provider = new XMLFileSystemTemplateProvider(@"C:\Users\david\source\repos\SP2017\OfficeDev1\ContentTypesAndFields\TaxonomyFun", "");
+                string templateName = "Template.xml";
+                ProvisioningTemplate template = provider.GetTemplate(templateName);
+                ctx.Web.ApplyProvisioningTemplate(template);
+
             }
         }
 
@@ -26,7 +35,7 @@ namespace TaxonomyFun
 
             TermStore store = ctx.Site.GetDefaultSiteCollectionTermStore();
             // guid is from the termset i created below.
-            TermSet termset = store.GetTermSet("{549859DF-A871-4248-A8F2-49A3BF77951E}".ToGuid());
+            Microsoft.SharePoint.Client.Taxonomy.TermSet termset = store.GetTermSet("{549859DF-A871-4248-A8F2-49A3BF77951E}".ToGuid());
 
             ctx.Load(termset);
             ctx.ExecuteQuery();
@@ -47,17 +56,17 @@ namespace TaxonomyFun
         {
             TermStore store = ctx.Site.GetDefaultSiteCollectionTermStore();
 
-            TermGroup group = store.GetTermGroupByName("David");
+            Microsoft.SharePoint.Client.Taxonomy.TermGroup group = store.GetTermGroupByName("David");
             if (group == null)
             {
                 group = store.CreateTermGroup("David", "{B49D90C1-3E56-442C-914B-52364893DA88}".ToGuid());
             }
 
-            TermSet termset = group.EnsureTermSet("Animals", "{549859DF-A871-4248-A8F2-49A3BF77951E}".ToGuid(), 1033);
+            Microsoft.SharePoint.Client.Taxonomy.TermSet termset = group.EnsureTermSet("Animals", "{549859DF-A871-4248-A8F2-49A3BF77951E}".ToGuid(), 1033);
 
 
             termset.CreateTerm("Dog", 1033, "{56E0153A-7CA0-42E2-9E24-29E998EC47AB}".ToGuid());
-            Term cat = termset.CreateTerm("Cat", 1033, "{237D6C0E-D4B5-4C48-A297-11770738903A}".ToGuid());
+            Microsoft.SharePoint.Client.Taxonomy.Term cat = termset.CreateTerm("Cat", 1033, "{237D6C0E-D4B5-4C48-A297-11770738903A}".ToGuid());
             termset.CreateTerm("Horse", 1033, "{F078BA36-752A-408D-8C70-87A639E06D5B}".ToGuid());
 
             ctx.Load(cat);

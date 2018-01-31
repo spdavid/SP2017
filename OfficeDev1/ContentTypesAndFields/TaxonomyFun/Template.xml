@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pnp:ProvisioningTemplate ID="CountryStuff" Version="1.0"
+      xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+
+  <pnp:TermGroups>
+    <pnp:TermGroup Name="David2" ID="{391649DC-A6D2-48F6-BF42-63E65336CDBC}">
+      <pnp:TermSets>
+        <pnp:TermSet Name="DocumentType" ID="{C52724DC-D601-4907-B317-5869B96FAC6A}" Language="1033">
+          <pnp:Terms>
+            <pnp:Term Name="Policy" ID="{B865F29B-859A-4512-AB59-E538D8BF88A4}" />
+            <pnp:Term Name="Checklist" ID="{1030AD53-3703-4EA9-AD15-2899298DF56C}" />
+            <pnp:Term Name="Project" ID="{36575A1B-B081-4964-A50B-53841F741D5F}" />
+            <pnp:Term Name="Template" ID="{12B380AE-52CC-4477-BC57-5C03BD6AD52B}" />
+          </pnp:Terms>
+        </pnp:TermSet>
+      </pnp:TermSets>
+    </pnp:TermGroup>
+  </pnp:TermGroups>
+  
+  
+  
+      <pnp:SiteFields>
+        <Field ID="{76F7B64B-384F-4771-9028-F17478B43B63}" Type="Note" DisplayName="DocumentType_0" StaticName="DA_DocTypeHidden" Name="DA_DocTypeHidden"  ShowInViewForms="FALSE" Required="FALSE" Hidden="TRUE" CanToggleHidden="TRUE" />
+        <Field ID="{A76D725F-8324-4152-AB83-4920E4342368}"
+               Type="TaxonomyFieldType" 
+               DisplayName="Document Type" 
+               Name="DA_DOCTYPE" 
+               StaticName="DA_DOCTYPE" 
+               ShowField="Term1033"
+               Required="FALSE" 
+               EnforceUniqueValues="FALSE"
+               Group="Davids Fields" >
+          <Customization>
+            <ArrayOfProperty>
+              <Property>
+                <Name>SspId</Name>
+                <Value xmlns:q1="http://www.w3.org/2001/XMLSchema" p4:type="q1:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{sitecollectiontermstoreid}</Value>
+              </Property>
+              <Property>
+                <Name>TermSetId</Name>
+                <Value xmlns:q2="http://www.w3.org/2001/XMLSchema" p4:type="q2:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{termsetid:David2:DocumentType}</Value>
+              </Property>
+              <Property>
+                <Name>TextField</Name>
+                <Value xmlns:q6="http://www.w3.org/2001/XMLSchema" p4:type="q6:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">76F7B64B-384F-4771-9028-F17478B43B63</Value>
+              </Property>
+              <Property>
+                <Name>IsPathRendered</Name>
+                <Value xmlns:q7="http://www.w3.org/2001/XMLSchema" p4:type="q7:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+              </Property>
+              <Property>
+                <Name>IsKeyword</Name>
+                <Value xmlns:q8="http://www.w3.org/2001/XMLSchema" p4:type="q8:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+              </Property>
+            </ArrayOfProperty>
+          </Customization>
+        </Field>
+        
+         </pnp:SiteFields>
+
+  <pnp:ContentTypes>
+    <pnp:ContentType ID="0x0101001FECA10C90B749CD80063D18AE1FC4B2" Name="Important document" Description="Documents" Group="Davids Contenet Types">
+      <pnp:FieldRefs>
+        <pnp:FieldRef ID="{A76D725F-8324-4152-AB83-4920E4342368}" Required="true" />
+      </pnp:FieldRefs>
+    </pnp:ContentType>
+  </pnp:ContentTypes>
+  
+        <pnp:Lists>
+        <pnp:ListInstance Title="Important documents"
+                    Description=""
+                    OnQuickLaunch="true"
+                    TemplateType="101"
+                    Url="Lists/importantDocs"
+                    EnableVersioning="false"
+                    RemoveExistingContentTypes="true">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x0101001FECA10C90B749CD80063D18AE1FC4B2" Default="true"/>
+          </pnp:ContentTypeBindings>
+        </pnp:ListInstance>
+        </pnp:Lists>
+
+      
+</pnp:ProvisioningTemplate>
