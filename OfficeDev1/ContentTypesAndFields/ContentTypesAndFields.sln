@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LookupsandtaxonomyFields", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAMLFun", "CAMLFun\CAMLFun.csproj", "{74707519-732B-4EE2-AFDF-CC8EC741DD91}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxonomyFun", "TaxonomyFun\TaxonomyFun.csproj", "{0DDD7EBD-465D-49B4-BC98-A15B9BE89F6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{74707519-732B-4EE2-AFDF-CC8EC741DD91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74707519-732B-4EE2-AFDF-CC8EC741DD91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74707519-732B-4EE2-AFDF-CC8EC741DD91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DDD7EBD-465D-49B4-BC98-A15B9BE89F6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DDD7EBD-465D-49B4-BC98-A15B9BE89F6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DDD7EBD-465D-49B4-BC98-A15B9BE89F6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DDD7EBD-465D-49B4-BC98-A15B9BE89F6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
