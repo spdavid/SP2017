@@ -60,6 +60,9 @@ Set-PnPGroupPermissions -Identity "Cool Readers" -AddRole "Add Only"
 New-PnPWeb -Title Subwebforme -Url subwebforme -Description "" -Template "STS#0" -ErrorAction SilentlyContinue
 
 
+$web = Get-PnPWeb
+Apply-PnPProvisioningTemplate -Path "Template.xml"
+
 
 
 
