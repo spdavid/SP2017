@@ -1,0 +1,45 @@
+﻿@using Microsoft.SharePoint.Client
+@model ListItemCollection
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List Items</h2>
+
+<form method="post" >
+    Add List Item <input type="text" name="NewListItemTitle" value="" /><input type="submit" name="" value="Add ListItem" />
+</form>
+
+
+<h1>List Items</h1>
+@foreach (var item in Model)
+{
+    <form method="post" action="/AddListItem/DeleteItem?SPHostUrl=@ViewBag.SPHostUrl">
+        <div>@item["Title"].ToString() <input type="hidden" name="itemId" value="@item.Id" /> <input type="submit" value="x" /></div>
+    </form>
+}
+@*
+    <script>
+        function SubmitForm(itemId)
+        {
+            document.getElementById('ItemId').value = itemId;
+            document.deleteform.submit();
+        }
+
+    </script>
+
+    <h1>List Items</h1>
+    <form method="post" name="deleteform" action="/AddListItem/DeleteItem?SPHostUrl=@ViewBag.SPHostUrl">
+        <input type="hidden" id="ItemId" name="itemId" value="" />
+
+        @foreach (var item in Model)
+        {
+
+            <div>@item["Title"].ToString()  <span onclick="SubmitForm('@item.Id');"  class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+
+        }
+    </form>
+
+*@
+
