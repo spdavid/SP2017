@@ -250,6 +250,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListFunController.cs" />
     <Compile Include="Controllers\SPListsController.cs" />
     <Compile Include="Filters\SharePointContextFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -306,6 +307,7 @@
     <Content Include="Views\SPLists\Delete.cshtml" />
     <Content Include="Views\SPLists\Create.cshtml" />
     <Content Include="Views\SPLists\Edit.cshtml" />
+    <Content Include="Views\ListFun\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
