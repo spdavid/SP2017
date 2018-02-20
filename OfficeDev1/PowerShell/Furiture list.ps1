@@ -61,7 +61,7 @@ New-PnPWeb -Title Subwebforme -Url subwebforme -Description "" -Template "STS#0"
 
 
 $web = Get-PnPWeb
-Apply-PnPProvisioningTemplate -Path "Template.xml"
+Apply-PnPProvisioningTemplate -Path "C:\Users\david\source\repos\SP2017\OfficeDev1\ContentTypesAndFields\TaxonomyFun\Template.xml"
 
 
 

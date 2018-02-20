@@ -1,5 +1,7 @@
 Connect-PnPOnline -Url https://folkis2017.sharepoint.com/sites/DavidClassic -UseWebLogin
 
+Set-PnPAppSideLoading -on
+
 Add-PnPCustomAction -Name "SiteActionsDavid" -Title "Open Google" -Description "opens a link to google" -Location "Microsoft.SharePoint.StandardMenu" -Group "SiteActions" -Sequence 1000 -Scope web -Url "https://www.google.com" 
 Add-PnPCustomAction -Name "SiteActionsDavid2" -Title "Javascript" -Description "runs javascript"  -Location "Microsoft.SharePoint.StandardMenu" -Group "SiteActions" -Sequence 1002 -Scope web -Url "javascript:alert('hello world');"
 
