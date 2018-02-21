@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{312488B6-43C3-43EB-AD5B-958F332B83BA}</ProjectGuid>
+    <ProjectGuid>{A8263EA0-C8B8-43DD-ADA8-2157B48B8038}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MyFirstSharePointAddIn</RootNamespace>
-    <AssemblyName>MyFirstSharePointAddIn</AssemblyName>
+    <RootNamespace>RemoteEventRecievers</RootNamespace>
+    <AssemblyName>RemoteEventRecievers</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetOfficeVersion>16.1</TargetOfficeVersion>
     <FileAlignment>512</FileAlignment>
@@ -16,12 +16,11 @@
     <MinimumOfficeToolsVersion>12.2</MinimumOfficeToolsVersion>
     <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
     <ProjectMode>SharePointApp</ProjectMode>
-    <AppFeaturePartId>{4f798ee4-65ba-4cd2-a1e5-8df3906eeca7}</AppFeaturePartId>
-    <WspPartId>{ecad633d-5fd1-483c-bbde-bf552e0ec26f}</WspPartId>
-    <WorkflowPartId>{31531ff2-3d40-4fda-8eec-7081b4c508f9}</WorkflowPartId>
-    <CspkgPartId>{ff07a21f-1aa2-44ec-831c-0f21983263f4}</CspkgPartId>
-    <SqlPackagePartId>{b9db1005-0989-4bce-9127-16516dc6a717}</SqlPackagePartId>
-    <ActivePublishProfile>folkis2017app - Web Deploy</ActivePublishProfile>
+    <AppFeaturePartId>{3f88cbfd-a8d9-4172-8cb9-af8464a359fb}</AppFeaturePartId>
+    <WspPartId>{aa37be83-5073-4b89-bca0-dbefe6852bf1}</WspPartId>
+    <WorkflowPartId>{b84eee05-1e28-4eba-a8f6-362dea53d087}</WorkflowPartId>
+    <CspkgPartId>{55db3a31-e309-4895-bae7-fa64e2011894}</CspkgPartId>
+    <SqlPackagePartId>{6340e89e-111b-456d-98a5-6c23da115302}</SqlPackagePartId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,9 +45,6 @@
     <Content Include="AppIcon.png">
       <OpcRelationship>manifest-icon</OpcRelationship>
     </Content>
-    <Content Include="ClientWebPart1\Elements.xml">
-      <OpcRelationship>feature-elementmanifest</OpcRelationship>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <AppManifestFile Include="AppManifest.xml">
@@ -56,21 +52,18 @@
     </AppManifestFile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MyFirstSharePointAddInWeb\MyFirstSharePointAddInWeb.csproj">
-      <Project>{B6BE72DD-6E47-4ADA-B5FD-16D8B5BEE0E9}</Project>
-      <Name>MyFirstSharePointAddInWeb</Name>
+    <ProjectReference Include="..\RemoteEventRecieversWeb\RemoteEventRecieversWeb.csproj">
+      <Project>{0C433B7D-D34E-4C2C-B10E-77693F22D04D}</Project>
+      <Name>RemoteEventRecieversWeb</Name>
       <Private>True</Private>
       <RoleType>Web</RoleType>
       <OutputItemType>SharePointWebProjectOutput</OutputItemType>
-      <RoleName>MyFirstSharePointAddInWeb</RoleName>
+      <RoleName>RemoteEventRecieversWeb</RoleName>
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="ClientWebPart1\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{904a3dd9-bf63-4e42-b2f8-5f7070d7b910}</SharePointProjectItemId>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
