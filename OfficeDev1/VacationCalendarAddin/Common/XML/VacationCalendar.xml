@@ -1,0 +1,122 @@
+﻿<pnp:ProvisioningTemplate ID="CountryStuff" Version="1.0"
+      xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+
+
+  <pnp:TermGroups>
+    <pnp:TermGroup Name="VacationCalenderGroup" ID="{42ECA028-C672-46E6-83AF-8C88B94471DF}">
+      <pnp:TermSets>
+        <pnp:TermSet Name="Reasions" ID="{11C32980-1E47-4A20-AB99-F355636D5B3E}" Language="1033">
+          <pnp:Terms>
+            <pnp:Term Name="Sick" ID="{850819C5-9D3D-4DBD-B10F-CE69C3C24C73}" />
+            <pnp:Term Name="VAB" ID="{D095189E-34B5-4D4E-AAC3-69C408256B92}" />
+            <pnp:Term Name="Unpaid Leave" ID="{5EA959C8-166C-47E4-ABA7-A0A7704F1B0C}" />
+            <pnp:Term Name="Vacation" ID="{CD15AF0D-AC7B-4666-920B-D031EB96CA1C}" />
+          </pnp:Terms>
+        </pnp:TermSet>
+      </pnp:TermSets>
+    </pnp:TermGroup>
+  </pnp:TermGroups>
+
+  <pnp:SiteFields>
+
+    <Field ID="{AC2965BE-B631-44CA-986D-F457A51AF983}" Group="vacationCalendar" Required="FALSE"  StaticName="VCEmployee"  Type="User" Name="VCEmployee" DisplayName="Employee"  />
+    <Field ID="{1B96E1DE-7F90-4D58-9302-6EAA761892B3}" Type="DateTime" DisplayName="StartDate" Required="FALSE" EnforceUniqueValues="FALSE"  Format="DateOnly" Group="vacationCalendar" FriendlyDisplayFormat="Disabled"  StaticName="VCStartDate" Name="VCStartDate">
+      <Default>[today]</Default>
+    </Field>
+    <Field ID="{359EDFFB-F97B-4F5A-A966-898C0D2AA096}" Type="DateTime" DisplayName="EndDate" Required="FALSE" EnforceUniqueValues="FALSE"  Format="DateOnly" Group="vacationCalendar" FriendlyDisplayFormat="Disabled"  StaticName="VCEndDate" Name="VCEndDate">
+      <Default>[today]</Default>
+    </Field>
+    <Field ID="{DE24E5AC-8D1E-4CC0-92BF-711564049057}" Type="Note" DisplayName="VCReasonHidden_0" StaticName="VCReasonHidden_0" Name="VCReasonHidden_0"  ShowInViewForms="FALSE" Required="FALSE" Hidden="TRUE" CanToggleHidden="TRUE" />
+    <Field ID="{78168ADF-BD92-4916-9233-3E523ADEB05E}"
+           Type="TaxonomyFieldType"
+           DisplayName="Reason for Absense"
+           Name="VCReason"
+           StaticName="VCReason"
+           ShowField="Term1033"
+           Required="FALSE"
+           EnforceUniqueValues="FALSE"
+           Group="VacationCalendar" >
+      <Customization>
+        <ArrayOfProperty>
+          <Property>
+            <Name>SspId</Name>
+            <Value xmlns:q1="http://www.w3.org/2001/XMLSchema" p4:type="q1:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{sitecollectiontermstoreid}</Value>
+          </Property>
+          <Property>
+            <Name>TermSetId</Name>
+            <Value xmlns:q2="http://www.w3.org/2001/XMLSchema" p4:type="q2:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{11C32980-1E47-4A20-AB99-F355636D5B3E}</Value>
+          </Property>
+          <Property>
+            <Name>TextField</Name>
+            <Value xmlns:q6="http://www.w3.org/2001/XMLSchema" p4:type="q6:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">DE24E5AC-8D1E-4CC0-92BF-711564049057</Value>
+          </Property>
+          <Property>
+            <Name>IsPathRendered</Name>
+            <Value xmlns:q7="http://www.w3.org/2001/XMLSchema" p4:type="q7:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+          <Property>
+            <Name>IsKeyword</Name>
+            <Value xmlns:q8="http://www.w3.org/2001/XMLSchema" p4:type="q8:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+        </ArrayOfProperty>
+      </Customization>
+    </Field>
+    
+    
+
+    <Field ID="{3A475D06-6218-42A2-94A5-F4429A8BDD7A}" ReadOnly="True" Name="VCApporoved" Type="Choice" DisplayName="Approval Status" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="RadioButtons" FillInChoice="FALSE" Group="vacationCalendar"  >
+      <Default>Requested</Default>
+      <CHOICES>
+        <CHOICE>Requested</CHOICE>
+        <CHOICE>Approved</CHOICE>
+        <CHOICE>Denied</CHOICE>
+      </CHOICES>
+    </Field>
+
+    <Field ID="{AD792F0B-9E33-4E3E-B896-6AFCC90EEBE3}" ReadOnly="True"  Name="VCComments" Type="Note" DisplayName="Comments" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="TRUE" RichTextMode="FullHtml" IsolateStyles="TRUE" Sortable="FALSE" Group="vacationCalendar"  ></Field>
+    
+    </pnp:SiteFields>
+
+  <pnp:ContentTypes>
+    <pnp:ContentType ID="0x0100B37476BD3D2C412682BC5DD66F699AC8"
+                     Name="Vacation Calendar"
+                      Group="Davids Content Types"
+                      Description="Content type for vacation calendar">
+      <pnp:FieldRefs>
+        <!-- Employee -->
+        <pnp:FieldRef ID="{AC2965BE-B631-44CA-986D-F457A51AF983}" />
+        <!-- Start date -->
+        <pnp:FieldRef ID="{1B96E1DE-7F90-4D58-9302-6EAA761892B3}"  />
+        <!-- EndDate -->
+        <pnp:FieldRef ID="{359EDFFB-F97B-4F5A-A966-898C0D2AA096}"  />
+        <!-- Reason -->
+        <pnp:FieldRef ID="{78168ADF-BD92-4916-9233-3E523ADEB05E}"  />
+        <!-- Approval status -->
+        <pnp:FieldRef ID="{3A475D06-6218-42A2-94A5-F4429A8BDD7A}"  />
+        <!-- comments -->
+        <pnp:FieldRef ID="{AD792F0B-9E33-4E3E-B896-6AFCC90EEBE3}"  />
+
+        
+      </pnp:FieldRefs>
+    </pnp:ContentType>
+  </pnp:ContentTypes>
+
+  <pnp:Lists>
+    <pnp:ListInstance Title="Vacation Calendar"
+                Description="List of absenses"
+                OnQuickLaunch="true"
+                TemplateType="100"
+                Url="Lists/VacationCalendar"
+                EnableVersioning="false"
+                RemoveExistingContentTypes="true">
+      <pnp:ContentTypeBindings>
+        <pnp:ContentTypeBinding ContentTypeID="0x0100B37476BD3D2C412682BC5DD66F699AC8" Default="true"/>
+      </pnp:ContentTypeBindings>
+    </pnp:ListInstance>
+  </pnp:Lists>
+
+
+
+
+
+</pnp:ProvisioningTemplate>
