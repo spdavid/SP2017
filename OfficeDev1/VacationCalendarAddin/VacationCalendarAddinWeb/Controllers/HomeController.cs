@@ -12,9 +12,11 @@ namespace VacationCalendarAddinWeb.Controllers
     public class HomeController : Controller
     {
         [SharePointContextFilter]
-        public ActionResult Index(string listid, int? ItemId)
+        public ActionResult Index(string listid, int? ItemId, string SPHostUrl)
         {
-            
+            ViewBag.SPHostUrl = SPHostUrl;
+            ViewBag.listid = listid;
+            ViewBag.ItemId = ItemId;
 
             var spContext = SharePointContextProvider.Current.GetSharePointContext(HttpContext);
 
@@ -34,7 +36,7 @@ namespace VacationCalendarAddinWeb.Controllers
 
 
         [HttpPost]
-        public ActionResult Index(string listid, int? ItemId, string comments, string requestsubmit)
+        public ActionResult ApproveRejectVacation(string listid, int? ItemId, string comments, string requestsubmit, string SPHostUrl)
         {
             var spContext = SharePointContextProvider.Current.GetSharePointContext(HttpContext);
 
@@ -48,12 +50,11 @@ namespace VacationCalendarAddinWeb.Controllers
                         VacationItemHelper.ApproveRejectRequest(listid.ToGuid(), ItemId.Value, ctx, comments, isapproved);
                     }
 
-                    VacationRequest request = VacationItemHelper.GetRequestFromSharePoint(listid.ToGuid(), ItemId.Value, ctx);
-                    return View(request);
+                
                 }
             }
 
-            return View();
+            return RedirectToAction("Index", new { SPHostUrl = SPHostUrl, listid = listid, ItemId = ItemId });
 
 
 

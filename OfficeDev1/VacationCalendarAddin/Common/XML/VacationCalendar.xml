@@ -84,17 +84,17 @@
                       Description="Content type for vacation calendar">
       <pnp:FieldRefs>
         <!-- Employee -->
-        <pnp:FieldRef ID="{AC2965BE-B631-44CA-986D-F457A51AF983}" />
+        <pnp:FieldRef ID="{AC2965BE-B631-44CA-986D-F457A51AF983}" Required="true" />
         <!-- Start date -->
-        <pnp:FieldRef ID="{1B96E1DE-7F90-4D58-9302-6EAA761892B3}"  />
+        <pnp:FieldRef ID="{1B96E1DE-7F90-4D58-9302-6EAA761892B3}" Required="true" />
         <!-- EndDate -->
-        <pnp:FieldRef ID="{359EDFFB-F97B-4F5A-A966-898C0D2AA096}"  />
+        <pnp:FieldRef ID="{359EDFFB-F97B-4F5A-A966-898C0D2AA096}" Required="true" />
         <!-- Reason -->
-        <pnp:FieldRef ID="{78168ADF-BD92-4916-9233-3E523ADEB05E}"  />
+        <pnp:FieldRef ID="{78168ADF-BD92-4916-9233-3E523ADEB05E}" Required="true" />
         <!-- Approval status -->
-        <pnp:FieldRef ID="{3A475D06-6218-42A2-94A5-F4429A8BDD7A}"  />
+        <pnp:FieldRef ID="{3A475D06-6218-42A2-94A5-F4429A8BDD7A}" />
         <!-- comments -->
-        <pnp:FieldRef ID="{AD792F0B-9E33-4E3E-B896-6AFCC90EEBE3}"  />
+        <pnp:FieldRef ID="{AD792F0B-9E33-4E3E-B896-6AFCC90EEBE3}" />
 
         
       </pnp:FieldRefs>
@@ -108,6 +108,7 @@
                 TemplateType="100"
                 Url="Lists/VacationCalendar"
                 EnableVersioning="false"
+                EnableFolderCreation="false"
                 RemoveExistingContentTypes="true">
       <pnp:ContentTypeBindings>
         <pnp:ContentTypeBinding ContentTypeID="0x0100B37476BD3D2C412682BC5DD66F699AC8" Default="true"/>

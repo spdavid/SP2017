@@ -12,6 +12,9 @@ namespace Common.Helpers
     public class SetupHelper
     {
 
+
+        #region Uninstall
+
         public static void RemoveVacationCalendar(ClientContext ctx)
         {
             if (ctx.Web.ListExists("Vacation Calendar"))
@@ -19,12 +22,47 @@ namespace Common.Helpers
                 ctx.Web.GetListByTitle("Vacation Calendar").DeleteObject();
                 ctx.ExecuteQuery();
             }
+
+           if (ctx.Web.ContentTypeExistsById("0x0100B37476BD3D2C412682BC5DD66F699AC8"))
+            {
+                ctx.Web.GetContentTypeById("0x0100B37476BD3D2C412682BC5DD66F699AC8").DeleteObject();
+                ctx.ExecuteQuery();
+            }
+
+            RemoveField(ctx, "VCEmployee");
+            RemoveField(ctx, "VCStartDate");
+            RemoveField(ctx, "VCEndDate");
+            RemoveField(ctx, "VCReasonHidden_0");
+            RemoveField(ctx, "VCReason");
+            RemoveField(ctx, "VCApporoved");
+            RemoveField(ctx, "VCComments");
+        }
+
+        private static void RemoveField(ClientContext ctx, string InternalName)
+        {
+            if (ctx.Web.FieldExistsByName(InternalName))
+            {
+                ctx.Web.GetFieldByInternalName(InternalName).DeleteObject();
+                ctx.ExecuteQuery();
+            }
+        }
+
+        #endregion
+
+        #region Install
+
+        public static void Install(ClientContext ctx)
+        {
+            CreateVacationCalendar(ctx);
+            FixViewForCalendar(ctx);
+            AddCustomActionToVacationCalendarList(ctx);
+
         }
 
         public static void CreateVacationCalendar(ClientContext ctx)
         {
-
-            XMLFileSystemTemplateProvider provider = new XMLFileSystemTemplateProvider(@"C:\Users\david\source\repos\SP2017\OfficeDev1\VacationCalendarAddin\Common\XML", "");
+            var path = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin");
+            XMLFileSystemTemplateProvider provider = new XMLFileSystemTemplateProvider(path + @"\XML", "");
             string templateName = "VacationCalendar.xml";
             ProvisioningTemplate template = provider.GetTemplate(templateName);
             ctx.Web.ApplyProvisioningTemplate(template);
@@ -71,7 +109,7 @@ namespace Common.Helpers
             ctx.ExecuteQuery();
         }
 
-
+#endregion
 
     }
 }

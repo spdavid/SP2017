@@ -9,6 +9,8 @@
   <Properties>
     <Title>VacationCalendarAddin</Title>
     <StartPage>~remoteAppUrl/?{StandardTokens}</StartPage>
+    <InstalledEventEndpoint>~remoteAppUrl/Services/AppEventReceiver.svc</InstalledEventEndpoint>
+    <UninstallingEventEndpoint>~remoteAppUrl/Services/AppEventReceiver.svc</UninstallingEventEndpoint>
   </Properties>
 
   <AppPrincipal>
@@ -17,5 +19,6 @@
   <AppPermissionRequests AllowAppOnlyPolicy="false" >
     <AppPermissionRequest Scope="http://sharepoint/content/sitecollection" Right="FullControl" />
     <AppPermissionRequest Scope="http://sharepoint/social/tenant" Right="Read" />
+    <AppPermissionRequest Scope="http://sharepoint/taxonomy" Right="Write" />
   </AppPermissionRequests>
 </App>

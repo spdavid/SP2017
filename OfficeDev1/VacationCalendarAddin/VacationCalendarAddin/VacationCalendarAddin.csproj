@@ -42,6 +42,9 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="AbsentToday\Elements.xml">
+      <OpcRelationship>feature-elementmanifest</OpcRelationship>
+    </Content>
     <Content Include="AppIcon.png">
       <OpcRelationship>manifest-icon</OpcRelationship>
     </Content>
@@ -63,6 +66,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="AbsentToday\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{38e55474-8812-4712-8b93-9db0df1b024e}</SharePointProjectItemId>
+    </None>
     <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -20,7 +20,15 @@ namespace Common.Helpers
             ListItem item = list.GetItemById(ItemId);
             ctx.Load(item);
             ctx.ExecuteQuery();
+            VacationRequest request = GetRequestFromItem(item);
 
+            return request;
+
+
+        }
+
+        private static VacationRequest GetRequestFromItem(ListItem item)
+        {
             VacationRequest request = new VacationRequest();
             request.Id = item.Id;
             request.RequestTitle = item["Title"].ToString();
@@ -42,11 +50,7 @@ namespace Common.Helpers
                 request.ApprovalStatus = item["VCApporoved"].ToString();
             }
 
-
-
             return request;
-
-        
         }
 
         public static void ApproveRejectRequest(Guid listId, int ItemId, ClientContext ctx, string comments, bool isApproved)
@@ -77,6 +81,37 @@ namespace Common.Helpers
 
 
         }
+
+
+        public static List<VacationRequest> GetAbsentToday(ClientContext ctx)
+        {
+            List list = ctx.Web.GetListByTitle("Vacation Calendar");
+            CamlQuery query = new CamlQuery();
+            query.ViewXml =
+                  @"<View>  
+                        <Query> 
+                           <Where><And><And><Leq><FieldRef Name='VCStartDate' /><Value Type='DateTime'><Today /></Value></Leq><Geq><FieldRef Name='VCEndDate' /><Value Type='DateTime'><Today /></Value></Geq></And><Eq><FieldRef Name='VCApporoved' /><Value Type='Choice'>Approved</Value></Eq></And></Where><OrderBy><FieldRef Name='Title' /></OrderBy> 
+                        </Query> 
+                         <ViewFields><FieldRef Name='VCComments' /><FieldRef Name='Title' /><FieldRef Name='VCStartDate' /><FieldRef Name='VCEndDate' /><FieldRef Name='VCReason' /><FieldRef Name='VCEmployee' /><FieldRef Name='VCApporoved' /></ViewFields> 
+                  </View>";
+          ListItemCollection items =  list.GetItems(query);
+            ctx.Load(items);
+            ctx.ExecuteQuery();
+
+            List<VacationRequest> requests = new List<VacationRequest>();
+
+            foreach (ListItem item in items)
+            {
+                VacationRequest request = GetRequestFromItem(item);
+                requests.Add(request);
+            }
+
+            return requests;
+
+        }
+
+
+
 
     }
 }

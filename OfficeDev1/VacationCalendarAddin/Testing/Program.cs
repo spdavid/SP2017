@@ -33,7 +33,10 @@ namespace Testing
                 //SetupHelper.FixViewForCalendar(ctx);
                 //SetupHelper.AddCustomActionToVacationCalendarList(ctx);
 
-                 UserProfileHelper.IsCurrentUserManagerOf(ctx, user, "Luis@folkis2017.onmicrosoft.com");
+                SetupHelper.RemoveVacationCalendar(ctx);
+                //SetupHelper.Install(ctx);
+
+                //  UserProfileHelper.IsCurrentUserManagerOf(ctx, user, "Luis@folkis2017.onmicrosoft.com");
 
 
                 //PeopleManager peopleManager = new PeopleManager(ctx);
