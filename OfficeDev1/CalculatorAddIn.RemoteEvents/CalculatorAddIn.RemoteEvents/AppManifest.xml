@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created:cb85b80c-f585-40ff-8bfc-12ff4d0e34a9-->
+<App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest"
+     Name="CalculatorAddInRemoteEvents"
+     ProductID="{8b175044-1215-450c-9903-fa1405f88bfa}"
+     Version="1.0.0.0"
+     SharePointMinVersion="16.0.0.0"
+>
+  <Properties>
+    <Title>CalculatorAddIn.RemoteEvents</Title>
+    <StartPage>~remoteAppUrl/?{StandardTokens}</StartPage>
+    <InstalledEventEndpoint>~remoteAppUrl/Services/AppEventReceiver.svc</InstalledEventEndpoint>
+    <UninstallingEventEndpoint>~remoteAppUrl/Services/AppEventReceiver.svc</UninstallingEventEndpoint>
+  </Properties>
+
+  <AppPrincipal>
+    <RemoteWebApplication ClientId="*" />
+  </AppPrincipal>
+  <AppPermissionRequests>
+    <AppPermissionRequest Scope="http://sharepoint/content/sitecollection" Right="FullControl" />
+  </AppPermissionRequests>
+</App>
