@@ -1,8 +1,10 @@
 body{
     background-color: rgb(225, 224, 231);
 }
-
-nav ul {
+/* ///////////////////// */
+/* Index page start */
+/* ///////////////////// */
+#indexpage nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -10,11 +12,11 @@ nav ul {
     background-color: #333;
 }
 
-nav li {
+#indexpage nav li {
     float: left;
 }
 
-nav li a {
+#indexpage nav li a {
    
     display: block;
     color: white;
@@ -23,11 +25,11 @@ nav li a {
     text-decoration: none;
 }
 
-nav li a:hover {
+#indexpage nav li a:hover {
     background-color: #111;
 }
 
-main
+#indexpage main
 {
     width:70%;
     float:left;
@@ -79,6 +81,98 @@ footer {
     float:left;
     width: 33.3333%
 }
+
+
+/* ///////////////////// */
+/* Index page end */
+/* ///////////////////// */
+
+#aboutpage #topbar > div
+{
+    float:left;
+}
+
+
+
+
+#aboutpage #logo
+{
+    width: 130px;
+}
+
+#titleandnav
+{
+    margin-left:20px;
+}
+
+#pagetitle
+{
+    font-weight: bold;
+    font-family: fantasy;
+    font-size: 20px;
+    line-height: 40px;
+    color: #494949;
+}
+
+#aboutpage nav
+{
+    line-height: 40px;
+}
+
+#aboutpage nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  
+}
+
+#aboutpage nav li {
+    float: left;
+}
+
+#aboutpage nav li a {
+   
+    display: block;
+    color: #494949;
+    text-align: center;
+   padding-right:10px;
+    text-decoration: none;
+    font-size:18px;
+}
+
+#aboutpage nav li a:hover {
+    color: #000;
+    text-decoration: underline;
+  
+}
+
+.box33
+{
+    float:left;
+    width: 33.3333%;
+    
+   
+}
+
+
+.box66
+{
+    float:left;
+    width: 66.66666%;
+    
+   
+}
+
+.box33 > div, .box66 > div
+{
+    margin:10px;
+    background-color: #fff;
+    min-height: 100px;
+}
+
+
+
 
 .cf::after {
     content: "";

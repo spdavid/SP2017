@@ -1,0 +1,78 @@
+body{
+    background-color: rgb(225, 224, 231);
+}
+
+img
+{
+    width:100%
+}
+
+
+#pagetitle
+{
+    font-weight: bold;
+    font-family: fantasy;
+    font-size: 20px;
+    line-height: 30px;
+    color: #494949;
+}
+
+#contactpage nav
+{
+    line-height: 30px;
+}
+
+#contactpage nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  
+}
+
+#contactpage nav li {
+    float: left;
+}
+
+#contactpage nav li a {
+   
+    display: block;
+    color: #494949;
+    text-align: center;
+   padding-right:10px;
+    text-decoration: none;
+    font-size:18px;
+}
+
+#contactpage nav li a:hover {
+    color: #000;
+    text-decoration: underline;
+  
+}
+
+
+.box
+{
+    margin:10px;
+    background-color: #fff;
+    min-height: 100px;
+}
+
+
+@media (max-width: 600px) {
+   .span4, .span8
+   {
+       width:100%;
+       margin-left:0px;
+   }
+
+   .span2
+   {
+    width: 23.875%;
+   }
+
+   .span10
+   {
+    width: 74.625%;
+   }
+}
