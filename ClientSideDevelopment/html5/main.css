@@ -1,0 +1,87 @@
+body{
+    background-color: rgb(225, 224, 231);
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+   
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #111;
+}
+
+main
+{
+    width:70%;
+    float:left;
+     
+}
+
+#maincontainer
+{
+    margin:0 10px 10px 0;
+   
+}
+
+.article
+{
+    background-color: #d5d5d5;
+   
+    padding:5px 0 5px 5px;
+    margin-right: 5px;
+}
+
+.article h4
+{
+    margin:0;
+}
+
+aside{
+    width:30%;
+    float:left;
+   
+}
+
+footer {
+   
+    width: 100%;
+    text-align: center;
+    font-size:10px;
+    font-style: italic;
+}
+#mountainfigure
+{
+    margin:10px;
+}
+
+#mountainfigure img{
+    max-width: 100%;
+}
+#newscontainer article
+{
+    float:left;
+    width: 33.3333%
+}
+
+.cf::after {
+    content: "";
+    clear: both;
+    display: table;
+}
