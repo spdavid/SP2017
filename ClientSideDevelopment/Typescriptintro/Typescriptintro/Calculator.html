@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/calculator.js"></script>
+    <script>
+        var calc = new Calculator();
+        calc.SetUpCalculator();
+    </script>
+    <style>
+        .buttonContainer
+        {
+            width: 300px;
+
+        }
+
+            .buttonContainer .calcbutton {
+                float: left;
+                width: 25%;
+              
+            }
+    </style>
+</head>
+<body>
+
+    <input type='text' id="result" />
+    <div class="buttonContainer">
+        <input type='button' class="calcbutton" id="button1" value="1" />
+        <input type='button' class="calcbutton" id="button2" value="2" />
+        <input type='button' class="calcbutton" id="button3" value="3" />
+        <input type='button' class="calcbutton" id="plus" value="+" />
+
+        <input type='button' class="calcbutton" id="button4" value="4" />
+        <input type='button' class="calcbutton" id="button5" value="5" />
+        <input type='button' class="calcbutton" id="button6" value="6" />
+        <input type='button' class="calcbutton" id="minus" value="-" />
+
+        <input type='button' class="calcbutton" id="button7" value="7" />
+        <input type='button' class="calcbutton" id="button8" value="8" />
+        <input type='button' class="calcbutton" id="button9" value="9" />
+        <input type='button' class="calcbutton" id="button0" value="0" />
+
+      </div>
+    <br style="clear:both" />
+    <input type='button' id="equals" value="=" />
+
+
+</body>
+</html>
