@@ -17,11 +17,20 @@
           "manifest": "./src/webparts/hello2/Hello2WebPart.manifest.json"
         }
       ]
+    },
+    "show-lists-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/showLists/ShowListsWebPart.js",
+          "manifest": "./src/webparts/showLists/ShowListsWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
     "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
-    "Hello2WebPartStrings": "lib/webparts/hello2/loc/{locale}.js"
+    "Hello2WebPartStrings": "lib/webparts/hello2/loc/{locale}.js",
+    "ShowListsWebPartStrings": "lib/webparts/showLists/loc/{locale}.js"
   }
 }

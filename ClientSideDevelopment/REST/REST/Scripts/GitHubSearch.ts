@@ -118,12 +118,50 @@ class GitHubSearch
         button.onclick = () => { this.GetSearchResults(); };
     }
 
+    public static GetSearchResults()
+    {
+        this.GetSearchResultsCall().then(
+            (results) => {
+                this.RenderResults(results);
+            })
+            .catch((errormsg) => {
+                console.log(errormsg);
+            });
 
 
-    public static GetSearchResults(): Promise<ISearchResults>
+        
+
+    }
+
+
+    private static GetSearchResultsCall(): Promise<ISearchResults>
     {
         return new Promise(function (resolve, reject) {
-            setTimeout(resolve, 100, 'foo');
+            var searchTextBox = document.getElementById("search") as HTMLInputElement;
+
+            var searchText = searchTextBox.value;
+
+            var url = `https://api.github.com/search/repositories?q=${searchText}`;
+
+            fetch(url).then(
+                (response) => {
+                    if (response.ok)
+                    {
+                        response.json().then(
+                            data =>
+                            {
+                                resolve(data);
+                            });
+                    }
+                    else
+                    {
+                        reject(response.statusText);
+                    }
+
+                });
+
+
+
         });
 
 
@@ -157,19 +195,19 @@ class GitHubSearch
     //}
 
 
-    //private static RenderResults(data: ISearchResults)
-    //{
+    private static RenderResults(data: ISearchResults)
+    {
         
 
-    //    var resultsDiv = document.getElementById("results") as HTMLDivElement;
-    //    resultsDiv.innerHTML = "";
-    //    data.items.forEach((repo) => { 
-    //        resultsDiv.innerHTML += `
-    //             <div>
-    //                <a href="${repo.html_url}">${repo.name}</a> by (${repo.owner.login})
-    //            </div>`;
-    //            });
-    //    }
+        var resultsDiv = document.getElementById("results") as HTMLDivElement;
+        resultsDiv.innerHTML = "";
+        data.items.forEach((repo) => { 
+            resultsDiv.innerHTML += `
+                 <div>
+                    <a href="${repo.html_url}">${repo.name}</a> by (${repo.owner.login})
+                </div>`;
+                });
+        }
 
 }
 
