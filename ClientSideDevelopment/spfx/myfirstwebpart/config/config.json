@@ -33,6 +33,22 @@
           "manifest": "./src/webparts/listCrud/ListCrudWebPart.manifest.json"
         }
       ]
+    },
+    "property-panel-fun-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/propertyPanelFun/PropertyPanelFunWebPart.js",
+          "manifest": "./src/webparts/propertyPanelFun/PropertyPanelFunWebPart.manifest.json"
+        }
+      ]
+    },
+    "upload-file-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/uploadFile/UploadFileWebPart.js",
+          "manifest": "./src/webparts/uploadFile/UploadFileWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -40,6 +56,8 @@
     "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
     "Hello2WebPartStrings": "lib/webparts/hello2/loc/{locale}.js",
     "ShowListsWebPartStrings": "lib/webparts/showLists/loc/{locale}.js",
-    "ListCrudWebPartStrings": "lib/webparts/listCrud/loc/{locale}.js"
+    "ListCrudWebPartStrings": "lib/webparts/listCrud/loc/{locale}.js",
+    "PropertyPanelFunWebPartStrings": "lib/webparts/propertyPanelFun/loc/{locale}.js",
+    "UploadFileWebPartStrings": "lib/webparts/uploadFile/loc/{locale}.js"
   }
 }
