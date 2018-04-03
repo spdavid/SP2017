@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.4.1",
+    "libraryName": "pnpjs-pets",
+    "libraryId": "d58c6880-334f-4277-924f-7ca302198d24",
+    "environment": "spo"
+  }
+}

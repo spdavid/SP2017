@@ -61,7 +61,6 @@ export  class ListsService
                                     console.log(data);
 
                                     var returnData : IListData = { Title :listTitle , Url : data.ServerRelativeUrl};
-
                                     resolve(returnData);
                                 }
                             );

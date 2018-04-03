@@ -25,12 +25,21 @@
           "manifest": "./src/webparts/showLists/ShowListsWebPart.manifest.json"
         }
       ]
+    },
+    "list-crud-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/listCrud/ListCrudWebPart.js",
+          "manifest": "./src/webparts/listCrud/ListCrudWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
     "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
     "Hello2WebPartStrings": "lib/webparts/hello2/loc/{locale}.js",
-    "ShowListsWebPartStrings": "lib/webparts/showLists/loc/{locale}.js"
+    "ShowListsWebPartStrings": "lib/webparts/showLists/loc/{locale}.js",
+    "ListCrudWebPartStrings": "lib/webparts/listCrud/loc/{locale}.js"
   }
 }
