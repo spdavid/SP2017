@@ -1,13 +1,13 @@
 {
   "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "My First Web Part Solution",
-    "id": "7265cced-5a23-4d8f-b8ea-e7eb92297d1e",
+    "name": "react-intro-client-side-solution",
+    "id": "d71df4cb-02e4-4ffb-bf12-3be1ebf81714",
     "version": "1.0.0.0",
-    "includeClientSideAssets": false,
+    "includeClientSideAssets": true,
     "skipFeatureDeployment": true
   },
   "paths": {
-    "zippedPackage": "solution/firstWebPart.sppkg"
+    "zippedPackage": "solution/react-intro.sppkg"
   }
 }
