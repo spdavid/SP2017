@@ -1,0 +1,13 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "getting-taxonomy-client-side-solution",
+    "id": "80a7b4b7-7711-42e5-9f11-67ba1a5b0637",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/getting-taxonomy.sppkg"
+  }
+}

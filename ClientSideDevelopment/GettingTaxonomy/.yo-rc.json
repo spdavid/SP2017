@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.4.1",
+    "libraryName": "getting-taxonomy",
+    "libraryId": "80a7b4b7-7711-42e5-9f11-67ba1a5b0637",
+    "environment": "spo"
+  }
+}
