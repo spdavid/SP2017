@@ -57,15 +57,20 @@ export class TaxonomyHelper {
 
                     var ts = store.getTermSet(termSetIdGuid);
 
-                    var terms = ts.get_terms();
+                    //var terms = ts.getAllTerms();
 
-                    ctx.load(terms);
+                    var term = ts.getTerm(new SP.Guid("78d5cc84-7e29-4f9a-8636-686d819ea4b4"))
+
+                    var terms = term.get_terms();
+
+                    ctx.load(ts);
+                    ctx.load(terms, 'Include(IsRoot, Labels, TermsCount, CustomSortOrder, Id, Name, PathOfTerm, Parent, LocalCustomProperties)');
 
                     ctx.executeQueryAsync(
                         // success
                         () => {
                             var returnTerms: ITerm[] = [];
-
+console.log(terms);
                             for (let i = 0; i < terms.get_count(); i++) {
                                 const term: SP.Taxonomy.Term = terms.get_item(i);
 

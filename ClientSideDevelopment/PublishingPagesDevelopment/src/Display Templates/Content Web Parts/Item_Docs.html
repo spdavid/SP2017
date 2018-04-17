@@ -1,0 +1,51 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>Docs</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:ManagedPropertyMapping msdt:dt="string">'Author','Filename','Path','SecondaryFileExtension','ContentTypeId'</mso:ManagedPropertyMapping>
+<mso:MasterPageDescription msdt:dt="string">This Item Display Template is designed to help you build a search-driven page. It will show underlying values for the items returned so that you can troubleshoot any issues you may run into. </mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+
+    <!--
+            Warning: Do not try to add HTML to this section. Only the contents of the first <div>
+            inside the <body> tag will be used while executing Display Template code. Any HTML that
+            you add to this section will NOT become part of your Display Template.
+    -->
+    <script>
+        $includeLanguageScript(this.url, "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");
+    </script>
+
+    
+
+        <div id="Item_Diagnostic">
+<!--#_
+    console.log(ctx);
+var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_Diagnostic_");
+
+var linkURL = $getItemValue(ctx, "Path");
+linkURL.overrideValueRenderer($urlHtmlEncodeValueObject);
+
+
+var filename= $getItemValue(ctx, "Filename");
+var Author= $getItemValue(ctx, "Author");
+console.log(Author);
+
+var containerId = encodedId + "container";
+
+_#-->
+        <ul class="cbs-diagnostic-Container" id="_#= containerId =#_" data-displaytemplate="ItemDiagnostic">
+            <li><a href="_#= linkURL =#_?web=1">_#= filename.value =#_</a> by _#= Author.value =#_</li>
+        </ul>
+    </div>
+</body>
+</html>

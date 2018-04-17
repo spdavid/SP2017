@@ -13,7 +13,7 @@ var coreOptions = {
 };
 var creds = {
     username: 'sa@folkis2017.onmicrosoft.com',
-    password: 'yo'
+    password: 'Folkis2017'
 };
 
 

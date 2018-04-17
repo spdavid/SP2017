@@ -49,6 +49,22 @@
           "manifest": "./src/webparts/uploadFile/UploadFileWebPart.manifest.json"
         }
       ]
+    },
+    "filter-n-map-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/filterNMap/FilterNMapWebPart.js",
+          "manifest": "./src/webparts/filterNMap/FilterNMapWebPart.manifest.json"
+        }
+      ]
+    },
+    "search-test-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/searchTest/SearchTestWebPart.js",
+          "manifest": "./src/webparts/searchTest/SearchTestWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -58,6 +74,8 @@
     "ShowListsWebPartStrings": "lib/webparts/showLists/loc/{locale}.js",
     "ListCrudWebPartStrings": "lib/webparts/listCrud/loc/{locale}.js",
     "PropertyPanelFunWebPartStrings": "lib/webparts/propertyPanelFun/loc/{locale}.js",
-    "UploadFileWebPartStrings": "lib/webparts/uploadFile/loc/{locale}.js"
+    "UploadFileWebPartStrings": "lib/webparts/uploadFile/loc/{locale}.js",
+    "FilterNMapWebPartStrings": "lib/webparts/filterNMap/loc/{locale}.js",
+    "SearchTestWebPartStrings": "lib/webparts/searchTest/loc/{locale}.js"
   }
 }

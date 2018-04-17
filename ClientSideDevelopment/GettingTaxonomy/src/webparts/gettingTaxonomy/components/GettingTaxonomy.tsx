@@ -20,7 +20,7 @@ export default class GettingTaxonomy extends React.Component<IGettingTaxonomyPro
 
   public componentWillMount() {
     var taxHelper = new TaxonomyHelper(this.props.context);
-    taxHelper.GetTermsFromTermSet("549859df-a871-4248-a8f2-49a3bf77951e").then(terms => {
+    taxHelper.GetTermsFromTermSet("635b5bca-8c5f-4831-8bf8-a0d9d5eb75e0").then(terms => {
         this._terms = terms;
         this.setState({isReady : true});
     });
