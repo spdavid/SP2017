@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://folkis2017.sharepoint.com/sites/David",
+      "customActions": {
+        "2258addb-7321-4195-a679-94dd743505e1": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "TermSetId": "f3956345-7b99-42fb-ae0e-553523972f96"
+          }
+        }
+      }
+    },
+    "topMenu": {
+      "pageUrl": "https://folkis2017.sharepoint.com/sites/David",
+      "customActions": {
+        "2258addb-7321-4195-a679-94dd743505e1": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "TermSetId": "f3956345-7b99-42fb-ae0e-553523972f96"
+          }
+        }
+      }
+    }
+  }
+}
