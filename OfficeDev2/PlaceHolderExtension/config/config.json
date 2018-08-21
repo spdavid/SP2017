@@ -9,10 +9,28 @@
           "manifest": "./src/extensions/topMenu/TopMenuApplicationCustomizer.manifest.json"
         }
       ]
+    },
+    "item-info-alert-command-set": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/itemInfoAlert/ItemInfoAlertCommandSet.js",
+          "manifest": "./src/extensions/itemInfoAlert/ItemInfoAlertCommandSet.manifest.json"
+        }
+      ]
+    },
+    "status-indicator-field-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/statusIndicator/StatusIndicatorFieldCustomizer.js",
+          "manifest": "./src/extensions/statusIndicator/StatusIndicatorFieldCustomizer.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "TopMenuApplicationCustomizerStrings": "lib/extensions/topMenu/loc/{locale}.js"
+    "TopMenuApplicationCustomizerStrings": "lib/extensions/topMenu/loc/{locale}.js",
+    "ItemInfoAlertCommandSetStrings": "lib/extensions/itemInfoAlert/loc/{locale}.js",
+    "StatusIndicatorFieldCustomizerStrings": "lib/extensions/statusIndicator/loc/{locale}.js"
   }
 }

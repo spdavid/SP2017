@@ -1,0 +1,27 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "callsecuredfunction-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/callsecuredfunction/CallsecuredfunctionWebPart.js",
+          "manifest": "./src/webparts/callsecuredfunction/CallsecuredfunctionWebPart.manifest.json"
+        }
+      ]
+    },
+    "graph-testing-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/graphTesting/GraphTestingWebPart.js",
+          "manifest": "./src/webparts/graphTesting/GraphTestingWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CallsecuredfunctionWebPartStrings": "lib/webparts/callsecuredfunction/loc/{locale}.js",
+    "GraphTestingWebPartStrings": "lib/webparts/graphTesting/loc/{locale}.js"
+  }
+}

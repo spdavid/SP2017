@@ -4,12 +4,12 @@
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://folkis2017.sharepoint.com/sites/David",
-      "customActions": {
-        "2258addb-7321-4195-a679-94dd743505e1": {
-          "location": "ClientSideExtension.ApplicationCustomizer",
+      "pageUrl": "https://folkis2017.sharepoint.com/sites/David/Lists/StatusTest/AllItems.aspx",
+      "fieldCustomizers": {
+        "TestStatus": {
+          "id": "7b15faf1-4a62-4078-aeb8-df3698ce6003",
           "properties": {
-            "TermSetId": "f3956345-7b99-42fb-ae0e-553523972f96"
+            "sampleText": "Value"
           }
         }
       }
@@ -21,6 +21,30 @@
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
             "TermSetId": "f3956345-7b99-42fb-ae0e-553523972f96"
+          }
+        }
+      }
+    },
+    "itemInfoAlert": {
+      "pageUrl": "https://folkis2017.sharepoint.com/sites/David",
+      "customActions": {
+        "f9751dc0-091a-41c7-86f5-b3ae58a340d1": {
+          "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
+          "properties": {
+            "sampleTextOne": "One item is selected in the list",
+            "sampleTextTwo": "This command is always visible."
+          }
+        }
+      }
+    },
+    "statusIndicator": {
+      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "fieldCustomizers": {
+        "InternalFieldName": {
+
+          "id": "7b15faf1-4a62-4078-aeb8-df3698ce6003",
+          "properties": {
+            "sampleText": "Value"
           }
         }
       }

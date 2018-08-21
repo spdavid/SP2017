@@ -1,0 +1,12 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": true,
+    "isCreatingSolution": false,
+    "environment": "spo",
+    "version": "1.5.1",
+    "libraryName": "aad-http-client-graph-test",
+    "libraryId": "fb2a7785-ba6d-464a-a69f-84f936eea3f9",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}
