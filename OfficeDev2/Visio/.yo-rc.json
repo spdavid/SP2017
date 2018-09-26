@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.6.0",
+    "libraryName": "visio",
+    "libraryId": "ee1600dc-82f2-4892-b446-0fea3171edd9",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

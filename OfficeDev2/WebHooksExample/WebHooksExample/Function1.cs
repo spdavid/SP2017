@@ -26,6 +26,19 @@ namespace WebHooksExample
             {
                 List list = ctx.Web.GetListById(notif.Resource.ToGuid());
 
+               
+
+
+
+                ChangeToken startChangeToken = null;
+
+                var startChangeTokenvalue = list.GetPropertyBagValueString("lastchangetoken2", null);
+                if (startChangeTokenvalue != null)
+                {
+                    startChangeToken = new ChangeToken();
+                    startChangeToken.StringValue = startChangeTokenvalue;
+                }
+
                 log.Info("checking changes in list: " + list.Title);
                 ChangeQuery query = new ChangeQuery(false, false)
                 {
@@ -33,10 +46,11 @@ namespace WebHooksExample
                     Add = true,
                     Update = true,
                     DeleteObject = true,
-                    ChangeTokenStart = new ChangeToken
-                    {
-                        StringValue = string.Format("1;3;{0};{1};-1", list.Id.ToString(), DateTime.Now.AddMinutes(-50).ToUniversalTime().Ticks.ToString())
-                    },
+                    ChangeTokenStart = startChangeToken,
+                    //ChangeTokenStart = new ChangeToken
+                    //{
+                    //    StringValue = string.Format("1;3;{0};{1};-1", list.Id.ToString(), DateTime.Now.AddMinutes(-50).ToUniversalTime().Ticks.ToString())
+                    //},
                     ChangeTokenEnd = list.CurrentChangeToken
                 };
 
@@ -54,11 +68,14 @@ namespace WebHooksExample
 
                 }
 
+                list.SetPropertyBagValue("lastchangetoken2", list.CurrentChangeToken.StringValue);
+
+
 
 
 
             }
-           
+
 
 
         }

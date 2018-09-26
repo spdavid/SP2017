@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "aad-http-client-graph-test-2-client-side-solution",
+    "id": "89298491-7a33-4365-940d-a6a492a9cb95",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "webApiPermissionRequests": [
+      {
+        "resource": "DavidsCoolFunctionsApplication",
+        "scope": "user_impersonation"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read.All"
+      }
+      ,
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read"
+      }
+
+      
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/aad-http-client-graph-test-2.sppkg"
+  }
+}

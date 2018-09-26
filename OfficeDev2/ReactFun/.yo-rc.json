@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.5.1",
+    "libraryName": "react-fun",
+    "libraryId": "eaafc6a6-d72c-475e-8783-a3362fae21d3",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

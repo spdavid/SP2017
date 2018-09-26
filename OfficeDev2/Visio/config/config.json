@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "visio-view-fun-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/visioViewFun/VisioViewFunWebPart.js",
+          "manifest": "./src/webparts/visioViewFun/VisioViewFunWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "officejs": {
+      "path": "https://appsforoffice.microsoft.com/embedded/1.0/visio-web-embedded.js",
+      "globalName": "officejs"
+    }
+  },
+  "localizedResources": {
+    "VisioViewFunWebPartStrings": "lib/webparts/visioViewFun/loc/{locale}.js"
+  }
+}

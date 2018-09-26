@@ -1,0 +1,10 @@
+<setup>
+<environments>
+    <environment name="folkis" url="https://folkis2017.sharepoint.com/sites/david" creds="folkis2017" />
+</environments>
+    <scripts>
+        <script location=".\Customizations\PowerShell\ChangeTitle.ps1" type="pnpPS" />
+        <script location=".\Customizations\xml\addList.xml" type="pnpXML" />
+
+    </scripts>
+</setup>

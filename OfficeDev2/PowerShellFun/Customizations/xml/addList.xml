@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pnp:ProvisioningTemplate ID="CountryStuff" Version="1.0"
+      xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+        <pnp:Lists>
+        <pnp:ListInstance Title="alist"
+                    Description="List of countries"
+                    OnQuickLaunch="true"
+                    TemplateType="100"
+                    Url="alist"
+                    EnableVersioning="false"
+                    RemoveExistingContentTypes="true">
+          
+        </pnp:ListInstance>
+        </pnp:Lists>
+      
+</pnp:ProvisioningTemplate>
